@@ -1,0 +1,28 @@
+<mat-toolbar>
+  <span>Novosti</span>
+</mat-toolbar>
+
+<!-- ARTICLE CARD -->
+
+<mat-card *ngFor="let card of cards, let i = index" [routerLink]="['/news', i]">
+  <!-- IMAGE -->
+  <img mat-card-image [src]="card.img">
+
+  <div style="width: 100%">
+    <div style="width: 100%; text-align: right; padding-right: 5px;"><small>{{ card.date | date }}</small></div>
+  </div>
+
+  <mat-card-title>
+    {{ card.title }}
+  </mat-card-title>
+
+  <mat-card-content style="padding-top: 0;">
+    <!-- TITLE -->
+
+    <!-- ARTICLE -->
+    <p>
+      {{card.article.substr(0, prevLen)}}
+      <span *ngIf="card.article.length > prevLen">...<b>[mehr]</b></span>
+    </p>
+  </mat-card-content>
+</mat-card>

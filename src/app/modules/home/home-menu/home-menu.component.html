@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <span>Home</span>
+</mat-toolbar>
+
+<mat-grid-list cols="3" rowHeight="2:1">
+  <!-- LINKS -->
+  <mat-grid-tile *ngFor="let item of links" class="grid-menu">
+    <div class="d-flex flex-column text-center" routerLink="/home/vaktije">
+      <i class="material-icons">
+        {{ item.icon }}
+      </i>
+      <span>{{ item.label }}</span>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+  
