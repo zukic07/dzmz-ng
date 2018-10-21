@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NewsService } from '../services/news.service';
 
 @Component({
   selector: 'app-news-view',
@@ -8,9 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NewsViewComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  index : number;
+
+  constructor(private route: ActivatedRoute, private newsSvc: NewsService) {
     this.route.params.subscribe( data => {
-      console.log(data);
+      this.index = data.index;
     })
   }
 

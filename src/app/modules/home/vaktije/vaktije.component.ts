@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VaktijeService } from '../services/vaktije.service';
 import { HttpClient } from '@angular/common/http';
-import { FileGeneratorService } from '../services/fileGenerator.service';
 
 
 @Component({
@@ -15,7 +14,7 @@ export class VaktijeComponent implements OnInit {
   path = "";
   blob;
 
-  constructor(public vakSvc: VaktijeService, private http: HttpClient, private fileGenSvc : FileGeneratorService) { }
+  constructor(public vakSvc: VaktijeService, private http: HttpClient) { }
 
   ngOnInit() {
     if (this.vakSvc.vaktije == null) {

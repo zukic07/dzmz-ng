@@ -4,7 +4,7 @@
 
 <!-- ARTICLE CARD -->
 
-<mat-card *ngFor="let card of cards, let i = index" [routerLink]="['/news', i]">
+<mat-card *ngFor="let card of newsSvc.cards, let i = index" [routerLink]="['/news', i]">
   <!-- IMAGE -->
   <img mat-card-image [src]="card.img">
 
