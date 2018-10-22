@@ -15,7 +15,6 @@ export class CalendarService {
   calDate = new Date();
 
   constructor(private http: HttpClient) { 
-
   }
 
   getAllDates() {

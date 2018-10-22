@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from '../services/news.service';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-news-list',
@@ -10,7 +10,7 @@ export class NewsListComponent implements OnInit {
   // length of article preview length 
   prevLen: number = 100;
 
-  constructor(private newsSvc: NewsService) { }
+  constructor(public newsSvc: NewsService) { }
 
   ngOnInit() {
   }
