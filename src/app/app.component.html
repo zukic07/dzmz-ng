@@ -1,34 +1,3 @@
 
-<router-outlet style="padding-bottom: 60px;"></router-outlet>
+<router-outlet></router-outlet>
 
-<!-- NAV PLACEHOLDER for scroll fixing -->
-<div style="width: 100%; height: 52px; "></div>
-
-<nav mat-tab-nav-bar>
-  <!-- <a mat-tab-link
-     *ngFor="let link of navLinks"
-     [routerLink]="link.path"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    {{link.label}}
-  </a> -->
-  <div class="container">
-    <div class="row text-center">
-
-      <div class="col">
-        <a mat-tab-link routerLink="/news"
-          routerLinkActive="active-link">
-          news
-        </a>
-      </div>
-
-      <div class="col">
-        <a mat-tab-link routerLink="/home"
-          routerLinkActive="active-link">
-          home
-        </a>
-      </div>
-
-    </div> <!-- ROW END -->
-  </div> <!-- CONTAINER END -->
-</nav>

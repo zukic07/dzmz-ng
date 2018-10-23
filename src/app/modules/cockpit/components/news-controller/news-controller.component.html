@@ -1,0 +1,24 @@
+
+<form class="news-form p-3">
+  <!-- *** Title *** -->
+  <mat-form-field>
+    <input matInput placeholder="Titel" name="title" [(ngModel)]="title" (change)="onTitle($event)">
+  </mat-form-field>
+
+  <!-- *** Author *** -->
+  <mat-form-field>
+    <input matInput placeholder="Autor" name="author" [(ngModel)]="author">
+  </mat-form-field>
+
+  <!-- *** Article *** -->
+  <mat-form-field>
+    <textarea matInput placeholder="Artikel" name="article" [(ngModel)]="article"></textarea>
+  </mat-form-field>
+
+  <!-- *** Author *** -->
+  <input type="file" (change)="onFileChange($event)" name="path" [(ngModel)]="path">
+
+</form>
+<button mat-raised-button class="m-3" (click)="onClick()">Basic</button>
+
+<img [src]="img" *ngIf="img">

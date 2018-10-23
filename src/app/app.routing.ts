@@ -5,33 +5,39 @@ import { HomeComponent } from './components/home/home.component';
 import { NewsViewComponent } from './components/news/news-view/news-view.component';
 import { VaktijeComponent } from './components/home/vaktije/vaktije.component';
 import { HomeMenuComponent } from './components/home/home-menu/home-menu.component';
+import { VisitorComponent } from './components/visitor/visitor.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    // NEWS
-    {
-        path: 'news',
-        component: NewsComponent,
-    },
-    {
-        path: 'news/:index',
-        component: NewsViewComponent
-    },
-    // HOME
-    {
-        path: 'home',
-        component: HomeComponent,
-        children: [
-            {
-                path: '',
-                component: HomeMenuComponent
-            },
-            {
-                path: 'vaktije',
-                component: VaktijeComponent
-            }
-        ]
-    }
+    // * VISITOR
+    { path: '', component: VisitorComponent, children: [
+        // * NEWS
+        {
+            path: 'news',
+            component: NewsComponent,
+        },
+        {
+            path: 'news/:index',
+            component: NewsViewComponent
+        },
+        // * HOME
+        {
+            path: 'home',
+            component: HomeComponent,
+            children: [
+                {
+                    path: '',
+                    component: HomeMenuComponent
+                },
+                {
+                    path: 'vaktije',
+                    component: VaktijeComponent
+                }
+            ]
+        },
+    ]},
+    // * MODULES (dependent)
+    { path: 'cockpit', loadChildren: './modules/cockpit/cockpit.module#CockpitModule' },
   ];
 
 @NgModule({

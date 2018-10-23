@@ -1,7 +1,7 @@
 export class News {
     title:      string;
-    article:    string;
     author:     string;
+    article:    string;
     img:        string;
     date:       Date;
 }

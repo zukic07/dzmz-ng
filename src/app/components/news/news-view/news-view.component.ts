@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewsService } from 'src/app/services/news.service';
 import { News } from 'src/app/models/news.model';
-import { Timestamp } from 'rxjs';
+
 
 @Component({
   selector: 'app-news-view',

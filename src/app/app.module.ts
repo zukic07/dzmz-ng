@@ -24,6 +24,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { NewsListComponent } from './components/news/news-list/news-list.component';
 import { HomeMenuComponent } from './components/home/home-menu/home-menu.component';
+import { VisitorComponent } from './components/visitor/visitor.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HomeMenuComponent } from './components/home/home-menu/home-menu.compone
     NewsViewComponent,
     HomeComponent,
     HomeMenuComponent,
-    VaktijeComponent
+    VaktijeComponent,
+    VisitorComponent
   ],
   imports: [
     BrowserModule,
