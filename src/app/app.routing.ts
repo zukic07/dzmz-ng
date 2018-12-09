@@ -6,6 +6,8 @@ import { NewsViewComponent } from './components/news/news-view/news-view.compone
 import { VaktijeComponent } from './components/home/vaktije/vaktije.component';
 import { HomeMenuComponent } from './components/home/home-menu/home-menu.component';
 import { VisitorComponent } from './components/visitor/visitor.component';
+import { AuthService } from './services/auth.service';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -37,7 +39,8 @@ const routes: Routes = [
         },
     ]},
     // * MODULES (dependent)
-    { path: 'cockpit', loadChildren: './modules/cockpit/cockpit.module#CockpitModule' },
+    { path: 'cockpit', loadChildren: './modules/cockpit/cockpit.module#CockpitModule', canActivate: [AuthService] },
+    { path: 'login', component: LoginComponent }
   ];
 
 @NgModule({

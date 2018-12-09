@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 
+
 let routes = [
   { path: '', component: CockpitComponent }
 ]
@@ -22,7 +23,7 @@ let routes = [
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [ CockpitComponent, NewsControllerComponent ],
   bootstrap: [ CockpitComponent ]

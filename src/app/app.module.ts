@@ -25,6 +25,8 @@ import { environment } from '../environments/environment';
 import { NewsListComponent } from './components/news/news-list/news-list.component';
 import { HomeMenuComponent } from './components/home/home-menu/home-menu.component';
 import { VisitorComponent } from './components/visitor/visitor.component';
+import { LoginComponent } from './components/login/login.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { VisitorComponent } from './components/visitor/visitor.component';
     HomeComponent,
     HomeMenuComponent,
     VaktijeComponent,
-    VisitorComponent
+    VisitorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { VisitorComponent } from './components/visitor/visitor.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireModule,
     AngularFireStorageModule,
+    AngularFireAuthModule,
     // ROUTING
     AppRoutingModule
   ],
