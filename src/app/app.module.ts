@@ -27,6 +27,7 @@ import { HomeMenuComponent } from './components/home/home-menu/home-menu.compone
 import { VisitorComponent } from './components/visitor/visitor.component';
 import { LoginComponent } from './components/login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { MatButtonModule } from '@angular/material';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     MatGridListModule,
     MatIconModule,
     MatToolbarModule,
+    MatButtonModule,
     // FIREBASE
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireModule,

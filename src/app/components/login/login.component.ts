@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { delay } from 'rxjs/operators';
 import { interval } from 'rxjs';
 
 @Component({
@@ -10,8 +9,6 @@ import { interval } from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-
 
   constructor(public auth: AuthService, private router: Router) { }
 
@@ -23,7 +20,6 @@ export class LoginComponent implements OnInit {
       if (this.auth.isLoggedIn === "true") {
         this.router.navigate(["cockpit"]);
       }
-      console.log("huh");
     });
 
   }
