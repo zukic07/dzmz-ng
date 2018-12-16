@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 // MODELS
 import { Vaktija } from 'src/app/models/vaktija.model';
 import { VaktijeService } from 'src/app/services/vaktije.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vaktije',
@@ -15,7 +16,7 @@ import { VaktijeService } from 'src/app/services/vaktije.service';
 })
 export class VaktijeComponent implements OnInit {
 
-  constructor(public vakSvc: VaktijeService) {
+  constructor(public vakSvc: VaktijeService, private router: Router) {
    }
 
   ngOnInit() {
@@ -24,6 +25,10 @@ export class VaktijeComponent implements OnInit {
 
   onChange(item : Vaktija) {
     this.vakSvc.changePdfUrl(item);
+  }
+
+  goBack() {
+    this.router.navigate(["/home"]);
   }
 
 }

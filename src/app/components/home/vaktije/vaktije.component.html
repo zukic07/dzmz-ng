@@ -1,6 +1,10 @@
+<!-- HEADER -->
+<mat-toolbar>
+    <mat-icon style="margin-right: 15px;" (click)="goBack()">navigate_before</mat-icon>
+    <span>Vaktije</span>
+</mat-toolbar>
 
-
-<mat-form-field>
+<mat-form-field style="display: inherit; text-align: center;">
   <mat-select placeholder="mjesec" [(value)]="vakSvc.selected">
     <mat-option *ngFor="let item of vakSvc.vaktije" [value]="item.name" (click)="onChange(item)">
       {{item.name}}
