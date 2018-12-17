@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
@@ -30,6 +31,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatButtonModule } from '@angular/material';
 import { CalendarComponent } from './components/calendar/calendar.component';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -50,6 +53,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     BrowserAnimationsModule,
     HttpClientModule,
     PdfViewerModule,
+    FormsModule,
+    ReactiveFormsModule,
     // ANGULAR MATERIAL
     MatSelectModule,
     MatCardModule,
@@ -59,6 +64,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     MatToolbarModule,
     MatButtonModule,
     MatChipsModule,
+    MatInputModule,
     // FIREBASE
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireModule,

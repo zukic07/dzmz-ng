@@ -46,10 +46,22 @@ export class AuthService implements CanActivate {
     return this.oAuthLogin(provider)
   }
 
+  emailLogin(email, password) {
+    const provider = new firebase.auth.EmailAuthProvider();
+    return this.auth.auth.signInWithEmailAndPassword(email, password).then( () => {
+      this.updateLoginState();
+    })
+  }
+
   private oAuthLogin(provider) {
     return this.auth.auth.signInWithPopup(provider)
-      .then( () => {
-        this.updateLoginState()
+      .then( (d) => {
+        console.log(d);
+        if (d.user.uid == "JRzN2xYfUSZB9r6heFUEOTx3SOY2") {
+          this.updateLoginState()
+        } else {
+          this.denyAccess();
+        }
       })
   }
 
@@ -63,6 +75,12 @@ export class AuthService implements CanActivate {
     localStorage.setItem("isLoggedIn", this.isLoggedIn);
     this.loginSucceed.emit(true);
     this.router.navigate(["login"]);
+  }
+
+  private denyAccess() {
+    alert("not authorized!");
+    this.isLoggedIn = "false";
+    localStorage.setItem("isLoggedIn", this.isLoggedIn);
   }
 
   /**
