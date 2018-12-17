@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
+  public fixtures : {date: Date, name: string}[]= [
+    {date: new Date(), name: "Halka" },
+    {date: new Date(), name: "KurAn" },
+    {date: new Date(), name: "fudbal" }
+  ]
+
   date = new Date();
   currentDate = new Date();
 
@@ -26,6 +33,10 @@ export class CalendarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.fixtures[0].date.setDate(1);
+    this.fixtures[1].date.setDate(4);
+    this.fixtures[2].date.setDate(30);
+    
     this.date = new Date();
     this.currentDate = new Date();
 
@@ -51,6 +62,7 @@ export class CalendarComponent implements OnInit {
     this.router.navigate(["/home"]);
   }
 
+
   /**
    * set alls days of a month (param) as global array
    * @param month 
@@ -59,16 +71,20 @@ export class CalendarComponent implements OnInit {
     let date = new Date(this.currentDate);
     date.setDate(1);
     date.setDate(1 - ( (6 + date.getDay()) % 7));
-    let days = Array<number>();
+    let days = Array<{day: number, month: number, year: number}>(); 
 
-    while (date.getMonth() == (month - 1) || (date.getMonth() - 12) == -1) {
-      days.push(date.getDate());
+    // previous month
+    let prevMonth = (month - 1) != -1 ? (month - 1) : 11;
+    let prevYear = prevMonth == 11 ? this.currentYear-1: this.currentYear;
+    while (date.getMonth() == prevMonth) {
+      days.push({day: date.getDate(), month: prevMonth, year: prevYear});
       // next day
       date.setDate(date.getDate()+1);
     }
 
+    // current month
     while (date.getMonth() == month) {
-      days.push(date.getDate());
+      days.push({day: date.getDate(), month: month, year: this.currentYear});
       // next day
       date.setDate(date.getDate() + 1);
     }

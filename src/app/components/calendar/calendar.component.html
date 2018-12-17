@@ -23,12 +23,15 @@
   </mat-grid-list>
   <!-- cal list -->
   <mat-grid-list cols="7" rowHeight="2:3">
-    <mat-grid-tile *ngFor="let day of allDays">
+    <mat-grid-tile *ngFor="let dateHere of allDays">
       <div class="cal-item">
-          {{ day }}
+          {{ dateHere.day }}
           <br>
-          <div class="cal-term" *ngFor="let it of [0, 1]">
-            term
+          <div *ngFor="let term of fixtures" >
+            <div class="cal-term" 
+            *ngIf="term.date.getDate() == dateHere.day && term.date.getMonth() == dateHere.month && term.date.getFullYear() == dateHere.year">
+              {{ term.name }}
+            </div>
           </div>
       </div>
     </mat-grid-tile>
