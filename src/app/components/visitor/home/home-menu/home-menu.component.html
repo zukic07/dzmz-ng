@@ -5,7 +5,7 @@
 <mat-grid-list cols="3" rowHeight="2:1">
   <!-- LINKS -->
   <mat-grid-tile *ngFor="let item of links" class="grid-menu">
-    <div class="d-flex flex-column text-center" routerLink="/home/vaktije">
+    <div class="d-flex flex-column text-center" [routerLink]="item.route">
       <i class="material-icons">
         {{ item.icon }}
       </i>

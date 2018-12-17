@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-// FIRABASE
+// FIREBASE
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';

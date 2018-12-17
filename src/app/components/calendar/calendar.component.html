@@ -1,0 +1,36 @@
+<!-- HEADER -->
+<mat-toolbar>
+    <mat-icon style="margin-right: 15px;" (click)="goBack()">navigate_before</mat-icon>
+    <span>Termini</span>
+</mat-toolbar>
+
+<mat-card class="cal-card">
+  <!-- Month navigation -->
+  <div class="cal-title">
+    <mat-icon style="margin-right: 15px;" (click)="previousMonth()">navigate_before</mat-icon>
+    <div>{{ currentMonthName }} {{ currentYear }}</div>
+    <mat-icon style="margin-right: 15px;" (click)="nextMonth()">navigate_next</mat-icon>
+  </div>
+  <!-- weekdays -->
+  <mat-grid-list cols="7" rowHeight="2:1">
+    <mat-grid-tile>Mo</mat-grid-tile>
+    <mat-grid-tile>Di</mat-grid-tile>
+    <mat-grid-tile>Mi</mat-grid-tile>
+    <mat-grid-tile>Do</mat-grid-tile>
+    <mat-grid-tile>Fr</mat-grid-tile>
+    <mat-grid-tile>Sa</mat-grid-tile>
+    <mat-grid-tile>So</mat-grid-tile>
+  </mat-grid-list>
+  <!-- cal list -->
+  <mat-grid-list cols="7" rowHeight="2:3">
+    <mat-grid-tile *ngFor="let day of allDays">
+      <div class="cal-item">
+          {{ day }}
+          <br>
+          <div class="cal-term" *ngFor="let it of [0, 1]">
+            term
+          </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>

@@ -1,13 +1,14 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewsComponent } from './components/news/news.component';
-import { HomeComponent } from './components/home/home.component';
-import { NewsViewComponent } from './components/news/news-view/news-view.component';
-import { VaktijeComponent } from './components/home/vaktije/vaktije.component';
-import { HomeMenuComponent } from './components/home/home-menu/home-menu.component';
+import { NewsComponent } from './components/visitor/news/news.component';
+import { HomeComponent } from './components/visitor/home/home.component';
+import { NewsViewComponent } from './components/visitor/news/news-view/news-view.component';
+import { VaktijeComponent } from './components/vaktije/vaktije.component';
+import { HomeMenuComponent } from './components/visitor/home/home-menu/home-menu.component';
 import { VisitorComponent } from './components/visitor/visitor.component';
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -34,6 +35,10 @@ const routes: Routes = [
                 {
                     path: 'vaktije',
                     component: VaktijeComponent
+                },
+                {
+                    path: 'calendar',
+                    component: CalendarComponent
                 }
             ]
         },

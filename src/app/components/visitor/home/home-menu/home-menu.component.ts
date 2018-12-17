@@ -10,11 +10,13 @@ export class HomeMenuComponent implements OnInit {
   links = [
     {
       icon: "calendar_today",
-      label: "Termini"
+      label: "Termini",
+      route: "/home/calendar"
     },
     {
       icon: "import_contacts",
-      label: "Dove"
+      label: "Dove",
+      route: "/home/calendar"
     },
     {
       icon: "schedule",
@@ -23,15 +25,18 @@ export class HomeMenuComponent implements OnInit {
     },
     {
       icon: "local_library",
-      label: "Hutbe"
+      label: "Hutbe",
+      route: "/home/calendar"
     },
     {
       icon: "calendar_today",
-      label: "free"
+      label: "free",
+      route: "/home/calendar"
     },
     {
       icon: "home",
-      label: "Kontakt"
+      label: "Kontakt",
+      route: "/home/calendar"
     },
   ];
   
