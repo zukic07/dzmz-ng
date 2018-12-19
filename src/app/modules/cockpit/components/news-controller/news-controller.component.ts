@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-news-controller',
@@ -18,7 +20,7 @@ export class NewsControllerComponent implements OnInit {
   file;
 
 
-  constructor() { }
+  constructor(private db: AngularFirestore, private storage: AngularFireStorage) { }
 
   ngOnInit() {
   }
@@ -45,6 +47,14 @@ export class NewsControllerComponent implements OnInit {
     console.log(this.article);
     console.log(this.author);
     console.log(this.img);
+
+    this.db.collection("News").add({
+      title: this.title,
+      article: this.article,
+      author: this.author,
+      img: this.img
+    });
+    
 
   }
 

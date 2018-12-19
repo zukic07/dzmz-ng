@@ -56,7 +56,7 @@ export class AuthService implements CanActivate {
   private oAuthLogin(provider) {
     return this.auth.auth.signInWithPopup(provider)
       .then( (d) => {
-        console.log(d);
+        console.log(d.user);
         if (d.user.uid == "JRzN2xYfUSZB9r6heFUEOTx3SOY2") {
           this.updateLoginState()
         } else {

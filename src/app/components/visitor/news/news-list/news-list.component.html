@@ -9,7 +9,7 @@
   <img mat-card-image [src]="card.img">
 
   <div style="width: 100%">
-    <div style="width: 100%; text-align: right; padding-right: 5px;"><small>{{ card.date.toDate() | date }}</small></div>
+    <div style="width: 100%; text-align: right; padding-right: 5px;"><small>{{ card.date ? card.date.toDate() : null | date }}</small></div>
   </div>
 
   <mat-card-title>
