@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import * as firebase from 'firebase';
+import { isArray } from 'util';
 
 @Component({
   selector: 'app-news-controller',
@@ -13,36 +14,31 @@ export class NewsControllerComponent implements OnInit {
   title   : string = "ueberschrift" ;
   article : string = "story" ;
   author  : string = "Rifat" ;
-  img     : string | ArrayBuffer ;
+  img     : string;
   date    : Date;
 
   // -------
   path : string = "" ;
-  file;
 
 
   constructor(private db: AngularFirestore, private storage: AngularFireStorage) { }
 
   ngOnInit() {
-    this.db.collection("NewsPics").doc("News").get()
-    .subscribe( data => {
-      console.log(data.data());
-    });
 
   }
 
-  onFileChange(event) {
-    let freader = new FileReader();
+  // onFileChange(event) {
+  //   let freader = new FileReader();
 
-    const [some] = event.target.files;
-    freader.readAsDataURL(some);
+  //   const [some] = event.target.files;
+  //   freader.readAsDataURL(some);
 
-    freader.onload = () => {
-      this.img = freader.result;
-    };
+  //   freader.onload = () => {
+  //     this.img = freader.result;
+  //   };
 
 
-  }
+  // }
 
   onTitle(event) {
     console.log(event);
@@ -75,29 +71,25 @@ export class NewsControllerComponent implements OnInit {
     server: {
 
       process:(fieldName, file, metadata, load, error, progress, abort) => {
-        // this.db.collection("NewsPics").get().subscribe(data => {
-        //   console.log(data)
-        // });
+        let filename = "News/" + new Date().toISOString();
+        let upload = this.storage.ref(filename).put(file);
 
-        this.db.collection("NewsPics").doc("News").set({filename: "News/" + fieldName}).then( data => {
+        upload.percentageChanges().subscribe((data) => {
+          progress(true, data, 100);
+        })
 
-
-          let upload = this.storage.ref("News/" + fieldName).put(file);
-
-          upload.percentageChanges().subscribe((data) => {
-            progress(true, data, 100);
-          })
-
-          upload.then((f) => {
-            console.log(f);
-            load("finished!!");
+        upload.then((f) => {
+          console.log(f);
+          load("finished!!");
+          this.storage.ref(filename).getDownloadURL().subscribe( d => {
+            this.img = d;
+            console.log(d);
           });
-
-          // upload.task.on(firebase.storage.TaskState.ERROR, (err) => {
-          //   error(err);
-          // })
-
         });
+
+        upload.task.on(firebase.storage.TaskState.ERROR, (err) => {
+          error(err);
+        })
       
       }
     }
