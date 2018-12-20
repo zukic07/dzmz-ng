@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-news-controller',
@@ -23,6 +24,11 @@ export class NewsControllerComponent implements OnInit {
   constructor(private db: AngularFirestore, private storage: AngularFireStorage) { }
 
   ngOnInit() {
+    this.db.collection("NewsPics").doc("News").get()
+    .subscribe( data => {
+      console.log(data.data());
+    });
+
   }
 
   onFileChange(event) {
@@ -57,5 +63,58 @@ export class NewsControllerComponent implements OnInit {
     
 
   }
+
+
+  @ViewChild('myPond') myPond: any;
+
+  pondOptions = {
+    multiple: false,
+    labelIdle: 'Drop files here',
+    acceptedFileTypes: 'image/jpeg, image/png',
+    allowImagePreview: false,
+    server: {
+
+      process:(fieldName, file, metadata, load, error, progress, abort) => {
+        // this.db.collection("NewsPics").get().subscribe(data => {
+        //   console.log(data)
+        // });
+
+        this.db.collection("NewsPics").doc("News").set({filename: "News/" + fieldName}).then( data => {
+
+
+          let upload = this.storage.ref("News/" + fieldName).put(file);
+
+          upload.percentageChanges().subscribe((data) => {
+            progress(true, data, 100);
+          })
+
+          upload.then((f) => {
+            console.log(f);
+            load("finished!!");
+          });
+
+          // upload.task.on(firebase.storage.TaskState.ERROR, (err) => {
+          //   error(err);
+          // })
+
+        });
+      
+      }
+    }
+  };
+
+  pondFiles = [
+    // 'index.html'
+  ]
+
+  pondHandleInit() {
+    console.log('FilePond has initialised', this.myPond);
+    this.storage.ref("News/").child("")
+  }
+
+  pondHandleAddFile(event: any) {
+    console.log('A file was added', event);
+  }
+
 
 }
