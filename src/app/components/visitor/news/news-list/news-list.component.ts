@@ -13,6 +13,7 @@ export class NewsListComponent implements OnInit {
   constructor(public newsSvc: NewsService) { }
 
   ngOnInit() {
+    
   }
 
 }

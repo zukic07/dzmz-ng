@@ -1,6 +1,12 @@
-<mat-tab-group>
-  <mat-tab label="News"> <app-news-controller></app-news-controller> </mat-tab>
-  <mat-tab label="Second"> Content 2 </mat-tab>
-  <mat-tab label="Third"> Content 3 </mat-tab>
-</mat-tab-group>
-<button mat-raised-button (click)="auth.logout()">logout</button>
+<hr>
+<div class="container-fluid clearfix">
+  <button class="float-right" mat-raised-button (click)="auth.logout()">logout</button>
+</div>
+<hr>
+<div class="container-fluid">
+  <mat-tab-group>
+    <mat-tab label="News"> <app-news-controller></app-news-controller> </mat-tab>
+    <mat-tab label="Termini"> <app-termini-controller></app-termini-controller> </mat-tab>
+    <mat-tab label="Vaktije"> Content 3 </mat-tab>
+  </mat-tab-group>
+</div>

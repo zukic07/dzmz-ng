@@ -1,8 +1,32 @@
 
+<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+  Nachricht erfolgreich erstellt
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="success=false">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+  nicht alles korrekt ausgefüllt
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error=false">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<file-pond #myPond class="mt-5" 
+  [options]="pondOptions" 
+  [files]="pondFiles"
+  (oninit)="pondHandleInit()"
+  (onaddfile)="pondHandleAddFile($event)">
+</file-pond>
+
 <form class="news-form p-3">
   <!-- *** Title *** -->
   <mat-form-field>
-    <input matInput placeholder="Titel" name="title" [(ngModel)]="title" (change)="onTitle($event)">
+    <input matInput placeholder="Titel" name="title" [formControl]="title">
+    <mat-error *ngIf="title.invalid">{{getTitleErrorMessage()}}</mat-error>
   </mat-form-field>
 
   <!-- *** Author *** -->
@@ -12,22 +36,23 @@
 
   <!-- *** Article *** -->
   <mat-form-field>
-    <textarea matInput placeholder="Artikel" name="article" [(ngModel)]="article"></textarea>
+    <textarea matInput rows="10" placeholder="Artikel" name="article" [(ngModel)]="article"></textarea>
   </mat-form-field>
 
   <!-- *** Author *** -->
   <!-- <input type="file" (change)="onFileChange($event)" name="path" [(ngModel)]="path"> -->
+  <button type="submit" class="btn btn-lg btn-block btn-primary" (click)="onClick()">Erstellen</button>
  
 
 </form>
 
-<file-pond #myPond 
-    [options]="pondOptions" 
-    [files]="pondFiles"
-    (oninit)="pondHandleInit()"
-    (onaddfile)="pondHandleAddFile($event)">
-</file-pond>
-
-<button mat-raised-button class="m-3" (click)="onClick()">Erstellen</button>
-
-<img [src]="img" *ngIf="img" width="100%">
+<div class="container-fluid">
+  
+  <mat-card *ngFor="let doc of allNews">
+      <!-- close icon -->
+    <button type="button" class="close" aria-label="Close" (click)="deleteNews(doc.id)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ doc.data.title }}
+  </mat-card>
+</div>

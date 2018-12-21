@@ -6,9 +6,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NewsControllerComponent } from './components/news-controller/news-controller.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatNativeDateModule, MatSelectModule, MatCardModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // import filepond module
 import { FilePondModule, registerPlugin } from 'ngx-filepond';
@@ -17,6 +18,7 @@ import { FilePondModule, registerPlugin } from 'ngx-filepond';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import { TerminiControllerComponent } from './components/termini-controller/termini-controller.component';
 
 registerPlugin(FilePondPluginFileValidateType);
 registerPlugin(FilePondPluginImageExifOrientation);
@@ -34,12 +36,17 @@ let routes = [
     MatTabsModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatButtonModule,
+    MatCardModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     FormsModule,
+    ReactiveFormsModule,
     FilePondModule
 
   ],
-  declarations: [ CockpitComponent, NewsControllerComponent ],
+  declarations: [ CockpitComponent, NewsControllerComponent, TerminiControllerComponent ],
   bootstrap: [ CockpitComponent ]
 })
 export class CockpitModule { }
