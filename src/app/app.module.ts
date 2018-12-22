@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { NewsComponent } from './components/visitor/news/news.component';
 import { HomeComponent } from './components/visitor/home/home.component';
@@ -69,6 +69,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
     // FIREBASE
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
