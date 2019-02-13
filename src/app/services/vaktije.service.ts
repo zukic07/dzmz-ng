@@ -8,8 +8,17 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class VaktijeService {
 
-  selected;
-  vaktije : Vaktija[] = [];
-  pdfUrl = "";
+  vaktijeList = [];
+  current = null;
+
+  constructor(private db: AngularFirestore) {
+    this.db.firestore.collection("Vaktije").onSnapshot({includeMetadataChanges: true},(snapshot) => {
+      this.vaktijeList = [];
+      snapshot.forEach((doc) => {
+        if (this.current == null) this.current = {id: doc.id, data: doc.data()}; // init
+        this.vaktijeList.push({id: doc.id, data: doc.data()});
+      })
+    })
+  }
 
 }

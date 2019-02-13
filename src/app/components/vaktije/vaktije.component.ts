@@ -16,32 +16,35 @@ import { Router } from '@angular/router';
 })
 export class VaktijeComponent implements AfterViewInit {
   selected;
-  vaktije : Vaktija[] = [];
   pdfUrl = "";
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private router: Router) {
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private router: Router, public vaktijeSvc: VaktijeService) {
   }
 
   ngAfterViewInit() {
-    this.db.collection<Vaktija>('Vaktije').valueChanges().subscribe(list => {
-      this.vaktije = list;
-      if (this.vaktije.length > 0) {
-        this.selected = this.vaktije[0].title;
-        // this.storage.ref(this.vaktije[0].img).getDownloadURL().subscribe(url => {
-        //   this.pdfUrl = url;
-        // });
-        this.pdfUrl = this.vaktije[0].img;
-      }
-    });
+    // this.db.collection<Vaktija>('Vaktije').valueChanges().subscribe(list => {
+    //   this.vaktije = list;
+    //   if (this.vaktije.length > 0) {
+    //     this.selected = this.vaktije[0].title;
+    //     // this.storage.ref(this.vaktije[0].img).getDownloadURL().subscribe(url => {
+    //     //   this.pdfUrl = url;
+    //     // });
+    //     this.pdfUrl = this.vaktije[0].img;
+    //   }
+    // });
+    if (this.vaktijeSvc.vaktijeList.length > 0) {
+      this.pdfUrl = this.vaktijeSvc.vaktijeList[0].data.img;
+    }
   }
 
   changePdfUrl(item) {
     this.storage.ref(item.img).getDownloadURL().subscribe(url => this.pdfUrl = url);
   }
 
-  onChange(item : Vaktija) {
+  onChange(item) {
     //this.changePdfUrl(item);
-    this.pdfUrl = item.img;
+    this.pdfUrl = item.data.img;
+    this.vaktijeSvc.current = item;
   }
 
   goBack() {

@@ -10,10 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class NewsService {
 
-  newslistDB : Observable<any>;
   newslist = [];
 
-  curCard : News;
   
   constructor(private db: AngularFirestore) {
     this.db.firestore.collection("News").onSnapshot({includeMetadataChanges: true},(snapshot) => {
@@ -23,11 +21,5 @@ export class NewsService {
       })
     })
   }
-
-  // getNews(index: number) {
-  //   if (this.newslist.length >= index)
-  //     return this.newslist[index];
-  //   return null;
-  // }
 
 }
