@@ -6,6 +6,15 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "headers": [{
+      "source": "**/*.@(jpg|jpeg|png)",
+      "headers": [
+        {
+          "key" : "Access-Control-Allow-Origin",
+          "value" : "*"
+        }
+      ]
+    }],
     "rewrites": [
       {
         "source": "**",
