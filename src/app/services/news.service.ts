@@ -10,23 +10,24 @@ import { Observable } from 'rxjs';
 })
 export class NewsService {
 
-  newslistDB : Observable<News[]>;
-  newslist : News[] = [];
+  newslistDB : Observable<any>;
+  newslist = [];
 
   curCard : News;
   
   constructor(private db: AngularFirestore) {
-    this.newslistDB = this.db.collection<News>('News').valueChanges();
-    this.newslistDB.subscribe(list => {
-      this.newslist = list;
-      console.log(list);
-    });
+    this.db.firestore.collection("News").onSnapshot({includeMetadataChanges: true},(snapshot) => {
+      this.newslist = [];
+      snapshot.forEach((doc) => {
+        this.newslist.push({id: doc.id, data: doc.data()})
+      })
+    })
   }
 
-  getNews(index: number) {
-    if (this.newslist.length >= index)
-      return this.newslist[index];
-    return null;
-  }
+  // getNews(index: number) {
+  //   if (this.newslist.length >= index)
+  //     return this.newslist[index];
+  //   return null;
+  // }
 
 }

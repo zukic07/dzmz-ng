@@ -9,8 +9,7 @@
           "/favicon.ico",
           "/index.html",
           "/*.css",
-          "/*.js",
-          "/*"
+          "/*.js"
         ]
       }
     }, {
@@ -29,7 +28,7 @@
       "updateMode": "prefetch",
       "resources": {
         "urls": [
-          "https://firebasestorage*"
+          "https://firebasestorage*/**"
         ]
       }
     }

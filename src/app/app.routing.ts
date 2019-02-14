@@ -44,7 +44,7 @@ const routes: Routes = [
         },
     ]},
     // * MODULES (dependent)
-    { path: 'cockpit', loadChildren: './modules/cockpit/cockpit.module#CockpitModule'},//, canActivate: [AuthService] },
+    { path: 'cockpit', loadChildren: './modules/cockpit/cockpit.module#CockpitModule', canActivate: [AuthService] },
     { path: 'login', component: LoginComponent }
   ];
 
