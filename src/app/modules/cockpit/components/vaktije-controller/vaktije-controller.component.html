@@ -32,3 +32,14 @@
   (oninit)="pondHandleInit()"
   (onaddfile)="pondHandleAddFile($event)">
 </file-pond>
+
+<div class="container-fluid">
+  
+  <mat-card *ngFor="let doc of allVaktije">
+      <!-- close icon -->
+    <button type="button" class="close" aria-label="Close" (click)="deleteVaktija(doc.id)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ doc.data.title }}
+  </mat-card>
+</div>

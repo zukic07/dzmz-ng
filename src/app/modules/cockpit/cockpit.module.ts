@@ -21,6 +21,7 @@ import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import { TerminiControllerComponent } from './components/termini-controller/termini-controller.component';
 import { VaktijeControllerComponent } from './components/vaktije-controller/vaktije-controller.component';
 import { HutbaControllerComponent } from './components/hutba-controller/hutba-controller.component';
+import { DoveControllerComponent } from './components/dove-controller/dove-controller.component';
 
 registerPlugin(FilePondPluginFileValidateType);
 registerPlugin(FilePondPluginImageExifOrientation);
@@ -48,7 +49,7 @@ let routes = [
     FilePondModule
 
   ],
-  declarations: [ CockpitComponent, NewsControllerComponent, TerminiControllerComponent, VaktijeControllerComponent, HutbaControllerComponent ],
+  declarations: [ CockpitComponent, NewsControllerComponent, TerminiControllerComponent, VaktijeControllerComponent, HutbaControllerComponent, DoveControllerComponent ],
   bootstrap: [ CockpitComponent ]
 })
 export class CockpitModule { }
