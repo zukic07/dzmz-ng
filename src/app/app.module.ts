@@ -33,6 +33,7 @@ import { MatButtonModule } from '@angular/material';
 import { CalendarComponent } from './components/calendar/calendar.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 
@@ -74,7 +75,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AngularFireStorageModule,
     AngularFireAuthModule,
     // ROUTING
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ AngularFirestore ],
   bootstrap: [AppComponent]

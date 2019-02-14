@@ -10,29 +10,46 @@
     <br>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date" (dateInput)="fireEvent($event)">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" (dateInput)="getDate($event)">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <br>
+    <div class="row">
+      <!-- Stunde -->
+      <div class="col-5">
+        <mat-form-field>
+          <mat-select placeholder="Stunde" [(ngModel)]="theHour" (selectionChange)="update()">
+            <mat-option *ngFor="let i of hours" value="{{ i }}">{{ (i < 10)? '0'+i : i }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-2 d-flex align-items-center justify-content-center">:</div>
+      <!-- Minuten -->
+      <div class="col-5">
+        <mat-form-field>
+          <mat-select placeholder="Minute" [(ngModel)]="theMinute" (selectionChange)="update()">
+            <mat-option *ngFor="let i of minutes" value="{{ i }}">{{ i }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
 
-    <!-- Stunde -->
-    <mat-form-field>
-      <mat-select placeholder="Stunde" [(ngModel)]="theHour">
-        <mat-option *ngFor="let i of hours" value="{{ i }}">{{ i }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    :
-    <!-- Minuten -->
-    <mat-form-field>
-      <mat-select placeholder="Minute" [(ngModel)]="theMinute">
-        <mat-option *ngFor="let i of minutes" value="{{ i }}">{{ i }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-  <button class="btn btn-lg btn-block btn-primary mt-5" (click)="update()">Erstellen</button>
+  <button class="btn btn-lg btn-block btn-primary mt-5" (click)="addTermin()">Erstellen</button>
 
   </mat-card>
 
 </div>
+
+<div class="container-fluid">
+
+    <mat-card *ngFor="let doc of allTermini">
+        <!-- close icon -->
+      <button type="button" class="close" aria-label="Close" (click)="deleteTermin(doc.id)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{ doc.data.title }} <br>
+      {{ doc.data.date }}
+    </mat-card>
+  </div>

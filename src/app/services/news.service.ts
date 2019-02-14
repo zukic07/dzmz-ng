@@ -19,6 +19,7 @@ export class NewsService {
     this.newslistDB = this.db.collection<News>('News').valueChanges();
     this.newslistDB.subscribe(list => {
       this.newslist = list;
+      console.log(list);
     });
   }
 

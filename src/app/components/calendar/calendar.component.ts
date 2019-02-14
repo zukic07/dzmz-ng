@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 
 @Component({
@@ -8,10 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  public fixtures : {date: Date, name: string}[]= [
-    {date: new Date(), name: "Halka" },
-    {date: new Date(), name: "KurAn" },
-    {date: new Date(), name: "fudbal" }
+  public fixtures : {date: Date, title: string}[]= [
+    {date: new Date(), title: "Halka" },
+    {date: new Date(), title: "KurAn" },
+    {date: new Date(), title: "fudbal" }
   ]
 
   date = new Date();
@@ -30,12 +32,17 @@ export class CalendarComponent implements OnInit {
 
   public allDays; // array of all days this month
 
-  constructor(private router: Router) { }
+  termine;
+
+  constructor(private router: Router, private db: AngularFirestore) { }
 
   ngOnInit() {
-    this.fixtures[0].date.setDate(1);
-    this.fixtures[1].date.setDate(4);
-    this.fixtures[2].date.setDate(30);
+
+    this.getAllDates();
+
+    // this.fixtures[0].date.setDate(1);
+    // this.fixtures[1].date.setDate(4);
+    // this.fixtures[2].date.setDate(30);
     
     this.date = new Date();
     this.currentDate = new Date();
@@ -61,6 +68,19 @@ export class CalendarComponent implements OnInit {
   goBack() {
     this.router.navigate(["/home"]);
   }
+
+  getAllDates() {
+    this.db.collection("Termini").valueChanges().subscribe(list => {
+      this.termine = list;
+      this.termine.forEach((d : {date:Timestamp, title: string}) => {
+        return d.date = new Date(d.date.toDate());
+      });
+    })
+  }
+
+/* *************************** */
+/*  CREATE CALENDAR FUNCTIONS  */
+/* *************************** */
 
 
   /**

@@ -27,10 +27,10 @@
       <div class="cal-item">
           {{ dateHere.day }}
           <br>
-          <div *ngFor="let term of fixtures" >
+          <div *ngFor="let term of termine" >
             <div class="cal-term" 
             *ngIf="term.date.getDate() == dateHere.day && term.date.getMonth() == dateHere.month && term.date.getFullYear() == dateHere.year">
-              {{ term.name }}
+              {{ term.title }}
             </div>
           </div>
       </div>

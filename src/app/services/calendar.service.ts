@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Termin } from '../models/termin.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,9 @@ export class CalendarService {
 
   calDate = new Date();
 
-  constructor(private http: HttpClient) { 
+  constructor(private db: AngularFirestore) { 
+
   }
 
-  getAllDates() {
-    this.http.get("http://localhost:8080/v1/termini").subscribe( (data: {termini: Array<Termin>}) => {
-      console.log(data);
-      this.termine = data ? data.termini : [];
-    });
-  }
+
 }
