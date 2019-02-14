@@ -5,18 +5,22 @@
 </mat-toolbar>
 
 <mat-form-field style="display: inherit; text-align: center;">
-  <mat-select placeholder="mjesec" [(value)]="vakSvc.selected">
-    <mat-option *ngFor="let item of vakSvc.vaktije" [value]="item.name" (click)="onChange(item)">
-      {{item.name}}
+  <mat-select placeholder="mjesec" [(value)]="selected">
+    <mat-option *ngFor="let item of vaktije" [value]="item.title" (click)="onChange(item)">
+      {{item.title}}
     </mat-option>
   </mat-select>
 </mat-form-field>
 
 
-<pdf-viewer
-  [src]="vakSvc.pdfUrl"
+<!-- <pdf-viewer
+  [src]="pdfUrl"
   [zoom]="1.0"
   [original-size]="false"
   style="display: block;"
 >
-</pdf-viewer>
+</pdf-viewer> -->
+
+<mat-card>
+  <img mat-card-image [src]="pdfUrl" alt="Photo of Vaktija">
+</mat-card>

@@ -1,4 +1,4 @@
 export class Vaktija {
-    name: string;
-    pdf: string;
+    img: string;
+    title: string;
 }
