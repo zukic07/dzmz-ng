@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { NewsService } from 'src/app/services/news.service';
 import { News } from 'src/app/models/news.model';
 import { Location } from '@angular/common';
+import { AngularFirestore, DocumentSnapshot, DocumentData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-news-view',
@@ -11,14 +13,15 @@ import { Location } from '@angular/common';
 })
 export class NewsViewComponent implements OnInit {
 
-  card : News;
+  card : DocumentData;
 
-  constructor(private route: ActivatedRoute, private newsSvc: NewsService, private _locale: Location) {
+  constructor(private route: ActivatedRoute, private db: AngularFirestore, private _locale: Location) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe( data => {
-      this.card = this.newsSvc.getNews(data.index);
+    this.route.params.subscribe( (data : Params ) => {
+      console.log(data);
+      this.db.collection("News").doc(data.index).get().subscribe(d => this.card = d.data());
     })
   }
 

@@ -1,0 +1,57 @@
+
+<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+    Hutba erfolgreich erstellt
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="success=false">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  
+  <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+    nicht alles korrekt ausgefüllt
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error=false">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <file-pond #hutbaPond class="mt-5" 
+  [options]="pondOptions" 
+  [files]="pondFiles"
+  (oninit)="pondHandleInit()"
+  (onaddfile)="pondHandleAddFile($event)">
+</file-pond>
+
+<form class="hutbe-form p-3">
+    <!-- *** Title *** -->
+    <mat-form-field>
+      <input matInput placeholder="Titel" name="title" [formControl]="title">
+      <mat-error *ngIf="title.invalid">{{getTitleErrorMessage()}}</mat-error>
+    </mat-form-field>
+  
+    <!-- *** Author *** -->
+    <mat-form-field>
+      <input matInput placeholder="Autor" name="author" [(ngModel)]="author">
+    </mat-form-field>
+  
+    <!-- *** Article *** -->
+    <mat-form-field>
+      <textarea matInput rows="10" placeholder="Artikel" name="article" [(ngModel)]="article"></textarea>
+    </mat-form-field>
+  
+    <!-- *** Author *** -->
+    <!-- <input type="file" (change)="onFileChange($event)" name="path" [(ngModel)]="path"> -->
+    <button type="submit" class="btn btn-lg btn-block btn-primary" (click)="onClick()">Erstellen</button>
+   
+  
+  </form>
+  
+  <div class="container-fluid">
+    
+    <mat-card *ngFor="let doc of allHutbe">
+        <!-- close icon -->
+      <button type="button" class="close" aria-label="Close" (click)="deleteHutba(doc.id)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{ doc.data.title }}
+    </mat-card>
+  </div>

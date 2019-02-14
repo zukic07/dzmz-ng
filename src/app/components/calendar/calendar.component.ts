@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Timestamp } from 'rxjs/internal/operators/timestamp';
+//import { Timestamp } from 'rxjs/internal/operators/timestamp';
+import Timestamp = firestore.Timestamp;
+import { firestore } from 'firebase';
 
 
 @Component({
@@ -72,7 +74,7 @@ export class CalendarComponent implements OnInit {
   getAllDates() {
     this.db.collection("Termini").valueChanges().subscribe(list => {
       this.termine = list;
-      this.termine.forEach((d : {date:Timestamp, title: string}) => {
+      this.termine.forEach((d : {date: any, title: string}) => {
         return d.date = new Date(d.date.toDate());
       });
     })

@@ -4,16 +4,16 @@
 
 <!-- ARTICLE CARD -->
 
-<mat-card *ngFor="let card of newsSvc.newslist, let i = index" [routerLink]="['/news', i]">
+<mat-card *ngFor="let card of newslist" [routerLink]="['/news', card.id]">
   <!-- IMAGE -->
-  <img mat-card-image [src]="card.img">
+  <img mat-card-image [src]="card.data.img">
 
   <div style="width: 100%">
-    <div style="width: 100%; text-align: right; padding-right: 5px;"><small>{{ (card.date ? card.date.toDate() : null) | date : 'EEEE, dd.MM.yyyy' }}</small></div>
+    <div style="width: 100%; text-align: right; padding-right: 5px;"><small>{{ (card.data.date ? card.data.date.toDate() : null) | date : 'EEEE, dd.MM.yyyy' }}</small></div>
   </div>
 
   <mat-card-title>
-    {{ card.title }}
+    {{ card.data.title }}
   </mat-card-title>
 
   <mat-card-content style="padding-top: 0;">
@@ -21,8 +21,8 @@
 
     <!-- ARTICLE -->
     <p>
-      {{card.article.substr(0, prevLen)}}
-      <span *ngIf="card.article.length > prevLen">...<b>[mehr]</b></span>
+      {{card.data.article.substr(0, prevLen)}}
+      <span *ngIf="card.data.article.length > prevLen">...<b>[mehr]</b></span>
     </p>
   </mat-card-content>
 </mat-card>
