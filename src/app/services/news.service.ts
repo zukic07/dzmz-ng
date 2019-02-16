@@ -19,7 +19,7 @@ export class NewsService {
       snapshot.forEach((doc) => {
         this.newslist.push({id: doc.id, data: doc.data()})
       })
-    })
+    });
   }
 
 }

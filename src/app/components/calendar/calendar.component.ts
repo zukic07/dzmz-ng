@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 //import { Timestamp } from 'rxjs/internal/operators/timestamp';
 import Timestamp = firestore.Timestamp;
 import { firestore } from 'firebase';
+import { CalendarService } from 'src/app/services/calendar.service';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class CalendarComponent implements OnInit {
     {date: new Date(), title: "KurAn" },
     {date: new Date(), title: "fudbal" }
   ]
+
+  listView = false;
 
   date = new Date();
   currentDate = new Date();
@@ -36,11 +39,11 @@ export class CalendarComponent implements OnInit {
 
   termine;
 
-  constructor(private router: Router, private db: AngularFirestore) { }
+  constructor(private router: Router, private db: AngularFirestore, public calSvc: CalendarService) { }
 
   ngOnInit() {
 
-    this.getAllDates();
+    // this.getAllDates();
 
     // this.fixtures[0].date.setDate(1);
     // this.fixtures[1].date.setDate(4);

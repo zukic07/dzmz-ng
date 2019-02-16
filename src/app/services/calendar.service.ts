@@ -8,7 +8,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class CalendarService {
 
-  termine = [];
+  terminList = [];
 
   clickedDate = null;
   clickedTermine = [];
@@ -16,7 +16,12 @@ export class CalendarService {
   calDate = new Date();
 
   constructor(private db: AngularFirestore) { 
-
+    this.db.firestore.collection("Termini").onSnapshot({includeMetadataChanges: true},(snapshot) => {
+      this.terminList = [];
+      snapshot.forEach((doc) => {
+        this.terminList.push({id: doc.id, data: doc.data()});
+      });
+    });
   }
 
 

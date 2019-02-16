@@ -4,33 +4,37 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire';
-import { NewsComponent } from './components/visitor/news/news.component';
-import { HomeComponent } from './components/visitor/home/home.component';
 import { NewsViewComponent } from './components/visitor/news/news-view/news-view.component';
 import { VaktijeComponent } from './components/vaktije/vaktije.component';
 
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { HomeComponent } from './components/visitor/home/home.component';
+import { NewsComponent } from './components/visitor/news/news.component';
 import { NewsListComponent } from './components/visitor/news/news-list/news-list.component';
 import { HomeMenuComponent } from './components/visitor/home/home-menu/home-menu.component';
 import { VisitorComponent } from './components/visitor/visitor.component';
 import { LoginComponent } from './components/login/login.component';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { MatButtonModule } from '@angular/material';
 import { CalendarComponent } from './components/calendar/calendar.component';
+
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -68,6 +72,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MatButtonModule,
     MatChipsModule,
     MatInputModule,
+    MatListModule,
+    MatButtonToggleModule,
     // FIREBASE
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),

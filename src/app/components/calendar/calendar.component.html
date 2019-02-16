@@ -4,7 +4,26 @@
     <span>Termini</span>
 </mat-toolbar>
 
-<mat-card class="cal-card">
+<mat-card>
+  <mat-button-toggle-group name="listView" aria-label="Cal View">
+    <mat-button-toggle value="monthview" (click)="listView=false" [checked]="true">
+      <i class="material-icons">
+        calendar_today
+      </i>
+    </mat-button-toggle>
+    <mat-button-toggle value="list" (click)="listView=true">
+      <!-- <i class="material-icons">
+        calendar_view_today
+      </i> -->
+      list
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</mat-card>
+
+<!-- ********** -->
+<!-- Month View -->
+<!-- ********** -->
+<mat-card class="cal-card" *ngIf="!listView">
   <!-- Month navigation -->
   <div class="cal-title">
     <mat-icon style="margin-right: 15px;" (click)="previousMonth()">navigate_before</mat-icon>
@@ -27,13 +46,20 @@
       <div class="cal-item">
           {{ dateHere.day }}
           <br>
-          <div *ngFor="let term of termine" >
-            <div class="cal-term" 
-            *ngIf="term.date.getDate() == dateHere.day && term.date.getMonth() == dateHere.month && term.date.getFullYear() == dateHere.year">
-              {{ term.title }}
-            </div>
+          <div *ngFor="let term of calSvc.terminList" >
+            <!-- <div class="cal-term" 
+            *ngIf="term.data.date.getDate() == dateHere.day && term.data.date.getMonth() == dateHere.month && term.data.date.getFullYear() == dateHere.year">
+              {{ term.data.title }}--
+            </div> -->
           </div>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
+
+<!-- ********* -->
+<!-- List View -->
+<!-- ********* -->
+<mat-list role="list" *ngIf="listView">
+  <mat-list-item role="listitem" *ngFor="let termin of calSvc.terminList">{{ termin.data.title }}</mat-list-item>
+</mat-list>
