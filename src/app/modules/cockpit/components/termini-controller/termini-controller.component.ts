@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore, QuerySnapshot, QueryDocumentSnapshot } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { FormControl } from '@angular/forms';
+import * as firebase from 'firebase';
+import * as FilePond from 'filepond';
 
 @Component({
   selector: 'app-termini-controller',
@@ -8,8 +12,13 @@ import { AngularFirestore, QuerySnapshot, QueryDocumentSnapshot } from '@angular
 })
 export class TerminiControllerComponent implements OnInit {
 
-  title: string = "";
+  title   : FormControl = new FormControl('', []);
   date: Date = new Date();
+  img;
+  description;
+
+  success = false;
+  error = false;
 
   hours : Array<number> = [];
   minutes : Array<string> = ["00", "15", "30", "45"];
@@ -19,7 +28,7 @@ export class TerminiControllerComponent implements OnInit {
 
   allTermini;
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore, private storage: AngularFireStorage) { }
 
   ngOnInit() {
     //  init hours
@@ -62,10 +71,20 @@ export class TerminiControllerComponent implements OnInit {
     }
 
     this.db.collection("Termini").add({
-      title: this.title,
-      date: this.date
+      title: this.title.value,
+      date: this.date,
+      img: this.img,
+      description: this.description
     }).then(() => {
-      this.title = "";
+      // reset input fields
+      this.title.reset();
+      this.description = "";
+      this.img = "";
+
+      this.terminiPond.removeFiles();
+
+      this.success = true;
+      this.error = false;
     })
   }
 
@@ -76,5 +95,68 @@ export class TerminiControllerComponent implements OnInit {
     })
   }
 
+  /**
+   * check if all input fields are filled
+   */
+  checkInputFields() : boolean {
+  
+    if (this.title.value.length < 1) return false;
+
+    return true;
+  }
+
+
+
+  getTitleErrorMessage() {
+    return this.title.hasError('required') ? 'You must enter a value' : '';
+  }
+
+
+  @ViewChild('terminiPond') terminiPond: FilePond;
+
+  pondOptions = {
+    multiple: false,
+    labelIdle: 'Drop files here',
+    acceptedFileTypes: 'image/jpeg, image/png',
+    allowImagePreview: true,
+    server: {
+
+      process:(fieldName, file, metadata, load, error, progress, abort) => {
+        let filename = "News/" + new Date().toISOString();
+        let upload = this.storage.ref(filename).put(file);
+
+        upload.percentageChanges().subscribe((data) => {
+          progress(true, data, 100);
+        })
+
+        upload.then((f) => {
+          console.log(f);
+          load("finished!!");
+          this.storage.ref(filename).getDownloadURL().subscribe( d => {
+            this.img = d;
+            console.log(d);
+          });
+        });
+
+        upload.task.on(firebase.storage.TaskState.ERROR, (err) => {
+          error(err);
+        })
+      
+      }
+    }
+  };
+
+  pondFiles = [
+    // 'index.html'
+  ]
+
+  pondHandleInit() {
+    console.log('FilePond has initialised', this.terminiPond);
+    this.storage.ref("News/").child("")
+  }
+
+  pondHandleAddFile(event: any) {
+    console.log('A file was added', event);
+  }
 
 }

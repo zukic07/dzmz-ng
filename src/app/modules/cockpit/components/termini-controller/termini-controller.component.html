@@ -4,7 +4,8 @@
     <mat-card-title>Novi Termin</mat-card-title>
     <!-- *** Title *** -->
     <mat-form-field>
-      <input matInput placeholder="Titel" name="title" [(ngModel)]="title" (change)="onTitle($event)">
+      <input matInput placeholder="Titel" name="title" [formControl]="title" (change)="onTitle($event)">
+      <mat-error *ngIf="title.invalid">{{getTitleErrorMessage()}}</mat-error>
     </mat-form-field>
 
     <br>
@@ -36,7 +37,19 @@
       </div>
     </div>
 
-  <button class="btn btn-lg btn-block btn-primary mt-5" (click)="addTermin()">Erstellen</button>
+    <!-- *** Article *** -->
+    <mat-form-field>
+      <textarea matInput rows="10" placeholder="Description" name="description" [(ngModel)]="description"></textarea>
+    </mat-form-field>
+
+    <file-pond #terminiPond class="mt-5" 
+      [options]="pondOptions" 
+      [files]="pondFiles"
+      (oninit)="pondHandleInit()"
+      (onaddfile)="pondHandleAddFile($event)">
+    </file-pond>
+
+    <button class="btn btn-lg btn-block btn-primary mt-5" (click)="addTermin()">Erstellen</button>
 
   </mat-card>
 
@@ -44,12 +57,12 @@
 
 <div class="container-fluid">
 
-    <mat-card *ngFor="let doc of allTermini">
-        <!-- close icon -->
-      <button type="button" class="close" aria-label="Close" (click)="deleteTermin(doc.id)">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      {{ doc.data.title }} <br>
-      {{ doc.data.date }}
-    </mat-card>
-  </div>
+  <mat-card *ngFor="let doc of allTermini">
+      <!-- close icon -->
+    <button type="button" class="close" aria-label="Close" (click)="deleteTermin(doc.id)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ doc.data.title }} <br>
+    {{ doc.data.date }}
+  </mat-card>
+</div>

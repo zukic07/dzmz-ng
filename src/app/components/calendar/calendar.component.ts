@@ -74,14 +74,13 @@ export class CalendarComponent implements OnInit {
     this.router.navigate(["/home"]);
   }
 
-  getAllDates() {
-    this.db.collection("Termini").valueChanges().subscribe(list => {
-      this.termine = list;
-      this.termine.forEach((d : {date: any, title: string}) => {
-        return d.date = new Date(d.date.toDate());
-      });
-    })
-  }
+  // getAllDates() {
+  //   this.db.collection("Termini").valueChanges().subscribe(list => {
+  //     this.termine = list.forEach((d : {date: any, title: string}) => {
+  //       d.date = new Date(d.date.toDate());
+  //     });
+  //   })
+  // }
 
 /* *************************** */
 /*  CREATE CALENDAR FUNCTIONS  */
@@ -165,6 +164,18 @@ export class CalendarComponent implements OnInit {
       case 9: return "Oktobar";
       case 10: return "Novembar";
       case 11: return "Decembar";
+    }
+  }
+
+  getWeekDay(m: number) {
+    switch (m) {
+      case 0: return "SO";
+      case 1: return "MO";
+      case 2: return "DI";
+      case 3: return "MI";
+      case 4: return "DO";
+      case 5: return "FR";
+      case 6: return "SA";
     }
   }
 }
