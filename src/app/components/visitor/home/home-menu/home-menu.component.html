@@ -2,10 +2,15 @@
   <span>Home</span>
 </mat-toolbar>
 
-<mat-grid-list cols="3" rowHeight="2:1">
+<div class="container mt-3">
+  <p class="p-2">Dzuma Namaz - 15:00h</p>
+  <hr>
+</div>
+
+<mat-grid-list cols="3" rowHeight="5:3">
   <!-- LINKS -->
   <mat-grid-tile *ngFor="let item of links" class="grid-menu">
-    <button class=" link-button" [routerLink]="item.route" [disabled]="item.disabled">
+    <button class="link-button" [routerLink]="item.route" [disabled]="item.disabled">
       <div class="d-flex flex-column justify-content-end">
         <i class="material-icons">
           {{ item.icon }}
