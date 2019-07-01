@@ -38,6 +38,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 
@@ -53,7 +54,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     VaktijeComponent,
     VisitorComponent,
     LoginComponent,
-    CalendarComponent
+    CalendarComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

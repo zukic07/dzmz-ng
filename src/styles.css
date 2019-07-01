@@ -7,3 +7,12 @@ body {
     font-family: 'Roboto', sans-serif; 
     background-color: lightgray;
 }
+
+.dzmz-h1 {
+    color: #b3ab69;
+}
+
+mat-toolbar {
+    background-color: #b7332d !important;
+    color: white !important;
+}

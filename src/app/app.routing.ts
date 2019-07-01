@@ -9,6 +9,7 @@ import { VisitorComponent } from './components/visitor/visitor.component';
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -39,6 +40,10 @@ const routes: Routes = [
                 {
                     path: 'calendar',
                     component: CalendarComponent
+                },
+                {
+                    path: 'contact',
+                    component: ContactComponent
                 }
             ]
         },

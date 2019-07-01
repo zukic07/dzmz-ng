@@ -41,7 +41,7 @@ export class HomeMenuComponent implements OnInit {
     {
       icon: "home",
       label: "Kontakt",
-      route: "/home/calendar",
+      route: "/home/contact",
       disabled: false
     },
   ];
