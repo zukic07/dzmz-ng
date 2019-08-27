@@ -11,3 +11,13 @@ page-news {
 mat-card {
     margin: 15px;
 }
+
+@keyframes newsEnter {
+    from { margin-top: 50px; opacity: 0; }
+    // to   { opacity: '100%'; }
+}
+
+.card-animate {
+    animation-name: newsEnter;
+    animation-duration: 1s;
+}

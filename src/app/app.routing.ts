@@ -32,15 +32,18 @@ const routes: Routes = [
         },
         {
             path: 'home/vaktije',
-            component: VaktijeComponent
+            component: VaktijeComponent,
+            data: { animation: 'HomeSub' }
         },
         {
             path: 'home/calendar',
-            component: CalendarComponent
+            component: CalendarComponent,
+            data: { animation: 'HomeSub' }
         },
         {
             path: 'home/contact',
-            component: ContactComponent
+            component: ContactComponent,
+            data: { animation: 'HomeSub' }
         }
     ]},
     // * MODULES (dependent)
