@@ -1,10 +1,9 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewsComponent } from './components/visitor/news/news.component';
-import { HomeComponent } from './components/visitor/home/home.component';
-import { NewsViewComponent } from './components/visitor/news/news-view/news-view.component';
+import { NewsComponent } from './components/news/news.component';
+import { NewsViewComponent } from './components/news/news-view/news-view.component';
 import { VaktijeComponent } from './components/vaktije/vaktije.component';
-import { HomeMenuComponent } from './components/visitor/home/home-menu/home-menu.component';
+import { HomeMenuComponent } from './components/home-menu/home-menu.component';
 import { VisitorComponent } from './components/visitor/visitor.component';
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
@@ -19,6 +18,7 @@ const routes: Routes = [
         {
             path: 'news',
             component: NewsComponent,
+            data: { animation: 'News' }
         },
         {
             path: 'news/:index',
@@ -27,26 +27,21 @@ const routes: Routes = [
         // * HOME
         {
             path: 'home',
-            component: HomeComponent,
-            children: [
-                {
-                    path: '',
-                    component: HomeMenuComponent
-                },
-                {
-                    path: 'vaktije',
-                    component: VaktijeComponent
-                },
-                {
-                    path: 'calendar',
-                    component: CalendarComponent
-                },
-                {
-                    path: 'contact',
-                    component: ContactComponent
-                }
-            ]
+            component: HomeMenuComponent,
+            data: { animation: 'Home' }
         },
+        {
+            path: 'home/vaktije',
+            component: VaktijeComponent
+        },
+        {
+            path: 'home/calendar',
+            component: CalendarComponent
+        },
+        {
+            path: 'home/contact',
+            component: ContactComponent
+        }
     ]},
     // * MODULES (dependent)
     { path: 'cockpit', loadChildren: './modules/cockpit/cockpit.module#CockpitModule', canActivate: [AuthService] },

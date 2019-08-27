@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
-import { NewsViewComponent } from './components/visitor/news/news-view/news-view.component';
+import { NewsViewComponent } from './components/news/news-view/news-view.component';
 import { VaktijeComponent } from './components/vaktije/vaktije.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
@@ -25,10 +25,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { HomeComponent } from './components/visitor/home/home.component';
-import { NewsComponent } from './components/visitor/news/news.component';
-import { NewsListComponent } from './components/visitor/news/news-list/news-list.component';
-import { HomeMenuComponent } from './components/visitor/home/home-menu/home-menu.component';
+import { NewsComponent } from './components/news/news.component';
+import { NewsListComponent } from './components/news/news-list/news-list.component';
+import { HomeMenuComponent } from './components/home-menu/home-menu.component';
 import { VisitorComponent } from './components/visitor/visitor.component';
 import { LoginComponent } from './components/login/login.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -49,7 +48,6 @@ import { ContactComponent } from './components/contact/contact.component';
     NewsComponent,
     NewsListComponent,
     NewsViewComponent,
-    HomeComponent,
     HomeMenuComponent,
     VaktijeComponent,
     VisitorComponent,

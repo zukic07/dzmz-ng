@@ -1,8 +1,10 @@
-<router-outlet style="padding-bottom: 60px;"></router-outlet>
+<div class="sc" [@routeAnimations]="prepareRoute(outlet)" >
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
 
 
 <!-- NAV PLACEHOLDER for scroll fixing -->
-<div style="width: 100%; height: 52px; "></div>
+<!-- <div style="width: 100%; height: 52px; "></div> -->
 
 <nav mat-tab-nav-bar>
   <!-- <a mat-tab-link
