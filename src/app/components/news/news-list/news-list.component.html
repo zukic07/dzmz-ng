@@ -1,11 +1,13 @@
-<mat-toolbar>
+<mat-toolbar class="d-flex justify-content-between align-items-center">
   <span>Novosti</span>
+  <img class="dzmz-header-img" src="../../../assets/img/dzmzLogo.png">
 </mat-toolbar>
 
 <!-- ARTICLE CARD -->
 
 <mat-card class="card-animate" *ngFor="let card of newsSvc.newslist" [routerLink]="['/news', card.id]">
   <!-- IMAGE -->
+  <!-- <mat-spinner [color]="'warn'"></mat-spinner> -->
   <img mat-card-image [src]="card.data.img">
 
   <div style="width: 100%">

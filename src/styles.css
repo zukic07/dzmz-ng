@@ -16,3 +16,17 @@ mat-toolbar {
     background-color: #b7332d !important;
     color: white !important;
 }
+
+.dzmz-header-img {
+    height: 40%;
+    margin: 0px;
+}
+
+/* @keyframes imgload {
+    from { height: 0px }
+}
+
+img {
+    animation-name: imgload;
+    animation-duration: 3s;
+} */

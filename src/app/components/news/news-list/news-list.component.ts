@@ -13,6 +13,7 @@ export class NewsListComponent implements OnInit {
   prevLen: number = 100;
   newslistDB: any;
   newslist: any;
+  spin = true;
 
   constructor(public db: AngularFirestore, public newsSvc: NewsService) {
    }

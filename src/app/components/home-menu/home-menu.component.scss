@@ -2,3 +2,15 @@
     background-color: transparent;
     border: none;
 }
+
+.dzmz-bg {
+    background-image: url("../../../assets/img/dzmzLogoGray.png");
+    background-repeat: no-repeat;
+    background-position: center; 
+    height: 100%;
+}
+
+:host {
+    width: 100%;
+    background-color: white;
+}

@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
@@ -74,6 +75,7 @@ import { ContactComponent } from './components/contact/contact.component';
     MatInputModule,
     MatListModule,
     MatButtonToggleModule,
+    MatProgressSpinnerModule,
     // FIREBASE
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
