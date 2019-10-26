@@ -10,10 +10,7 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class NewsListComponent implements OnInit {
   // length of article preview length 
-  prevLen: number = 100;
-  newslistDB: any;
-  newslist: any;
-  spin = true;
+
 
   constructor(public db: AngularFirestore, public newsSvc: NewsService) {
    }

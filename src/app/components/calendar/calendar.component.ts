@@ -19,7 +19,7 @@ export class CalendarComponent implements OnInit {
     {date: new Date(), title: "fudbal" }
   ]
 
-  listView = false;
+  listView = true;
 
   date = new Date();
   currentDate = new Date();

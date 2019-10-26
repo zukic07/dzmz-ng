@@ -1,19 +1,19 @@
 <!-- HEADER -->
 <mat-toolbar>
-    <mat-icon style="margin-right: 15px;" (click)="goBack()">keyboard_arrow_down</mat-icon>
-    <span>Termini</span>
+  <mat-icon style="margin-right: 15px;" (click)="goBack()">keyboard_arrow_down</mat-icon>
+  <span>Termini</span>
 </mat-toolbar>
 
 <mat-card>
   <mat-button-toggle-group name="listView" aria-label="Cal View">
-    <mat-button-toggle value="monthview" (click)="listView=false" [checked]="true">
-      <i class="material-icons">
-        calendar_today
-      </i>
-    </mat-button-toggle>
-    <mat-button-toggle value="list" (click)="listView=true">
+    <mat-button-toggle value="list" (click)="listView=true" [checked]="true">
       <i class="material-icons">
         list
+      </i>
+    </mat-button-toggle>
+    <mat-button-toggle value="monthview" (click)="listView=false">
+      <i class="material-icons">
+        calendar_today
       </i>
     </mat-button-toggle>
   </mat-button-toggle-group>
@@ -43,16 +43,16 @@
   <mat-grid-list cols="7" rowHeight="2:3">
     <mat-grid-tile *ngFor="let dateHere of allDays">
       <div class="cal-item">
-          {{ dateHere.day }}
-          <br>
-          <div *ngIf="calSvc.terminList.length > 0">
-            <div *ngFor="let term of calSvc.terminList">
-              <div class="cal-term cal-color-default" 
+        {{ dateHere.day }}
+        <br>
+        <div *ngIf="calSvc.terminList.length > 0">
+          <div *ngFor="let term of calSvc.terminList">
+            <div class="cal-term cal-color-default"
               *ngIf="term.data.date.toDate().getDate() == dateHere.day && term.data.date.toDate().getMonth() == dateHere.month && term.data.date.toDate().getFullYear() == dateHere.year">
-                {{ term.data.title }}
-              </div>
+              {{ term.data.title }}
             </div>
           </div>
+        </div>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
@@ -62,27 +62,46 @@
 <!-- List View -->
 <!-- ********* -->
 <mat-list role="list" *ngIf="listView && calSvc.terminList.length > 0">
-  <mat-list-item role="listitem" *ngFor="let term of calSvc.terminList; let i = index" class="h-auto mb-2 w-100">
-    <div class="d-flex flex-column w-100">
-      <div class="text-muted text-uppercase text-monospace" *ngIf="i == 0 || (i > 0 && calSvc.terminList[i-1].data.date.toDate().getMonth() != calSvc.terminList[i].data.date.toDate().getMonth())">
+  <mat-list-item role="listitem" *ngFor="let term of calSvc.terminList; let i = index"
+    class="border rounded h-auto mb-2 w-100">
+    <!-- #region own listview -->
+    <!-- <div class="d-flex flex-column w-100">
+      <div class="text-muted text-uppercase text-monospace"
+        *ngIf="i == 0 || (i > 0 && calSvc.terminList[i-1].data.date.toDate().getMonth() != calSvc.terminList[i].data.date.toDate().getMonth())">
         {{ getMonthName(term.data.date.toDate().getMonth()) }}
       </div>
       <div class="d-flex flex-row w-100">
         <div class="d-flex flex-column text-center mr-4 h-75 align-self-start">
           <div class="weekday">{{getWeekDay(term.data.date.toDate().getDay())}}</div>
-          <div class="day" >{{term.data.date.toDate().getDate()}}</div>
+          <div class="day">{{term.data.date.toDate().getDate()}}</div>
         </div>
         <div class="w-100 h-100 d-flex flex-row justify-content-between border rounded p-1">
           <div class="">
             <div class="">{{ term.data.title }}</div>
-            <div class="text-muted">{{ term.data.date.toDate().getHours() }}:{{ term.data.date.toDate().getMinutes() }}Uhr</div>
-            <div class="ml-2 mr-2 pl-1 pr-1 bg-light rounded" *ngIf="term.data.description">{{ term.data.description }}</div>
+            <div class="text-muted">
+              {{ term.data.date.toDate().getHours() }}:{{ term.data.date.toDate().getMinutes() }}Uhr</div>
+            <div class="ml-2 mr-2 pl-1 pr-1 bg-light rounded" *ngIf="term.data.description">{{ term.data.description }}
+            </div>
           </div>
           <div *ngIf="term.data.img">
-            <img [src]="term.data.img" class="cal-list-img">
+            <img [src]="term.data.img" class="cal-list-img float-right">
           </div>
         </div>
       </div>
+    </div> -->
+    <!-- #endregion own list view -->
+    <!-- #region bootstrap media view -->
+    <div class="media">
+      <img [src]="term.data.img ? term.data.img : 'assets/img/dzmzLogoGrayWithBorder.png'" class="mr-3" width="64px"
+        height="64px" alt="...">
+      <div class="media-body">
+        <h5 class="mt-0 mb-0">{{ term.data.title }}</h5>
+        <div class="text-muted">
+          <p>{{ term.data.date.toDate().getHours() }}:{{ term.data.date.toDate().getMinutes() }}Uhr</p>
+        </div>
+        {{ term.data.description }}
+      </div>
     </div>
+    <!-- #endregion bootstrapm media -->
   </mat-list-item>
 </mat-list>

@@ -1,0 +1,39 @@
+.visible {
+    opacity : 0;
+}
+
+page-news {
+    .card {
+        margin: 5px;
+    }
+
+    .card-subtitle {
+
+    }
+}
+
+mat-card {
+    margin: 15px;
+}
+
+@keyframes newsEnter {
+
+    // to   { opacity: '100%'; }
+}
+
+@keyframes imgload {
+    from { margin-top: 50px; opacity: 0; }
+    0% { opacity: 0 }
+    50% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+.card-animate {
+    animation-name: imgload;
+    animation-duration: 500ms;
+}
+
+// mat-card {
+//     animation-name: imgload;
+//     animation-duration: 1500ms;
+// }

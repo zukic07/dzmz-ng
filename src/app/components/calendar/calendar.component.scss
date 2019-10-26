@@ -1,5 +1,6 @@
 :host {
     width: 100%;
+    background-color: white;
 }
 
 .cal-item {
@@ -38,13 +39,16 @@
 
 @keyframes imgload {
     0% { max-width: 0; opacity: 0 }
+    50% { max-width: 45px; opacity: 0 }
+    80% { opacity: 0.95 }
+    100% { max-width: 90px; opacity: 1 }
 }
 
 .cal-list-img {
     max-width: 90px;
     animation-name: imgload;
-    animation-duration: 200ms;
-    animation-timing-function: ease-out;
+    animation-duration: 800ms;
+    animation-timing-function: ease;
 }
 
 .cal-title {

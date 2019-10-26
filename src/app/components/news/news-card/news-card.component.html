@@ -1,0 +1,25 @@
+<mat-card class="card-animate" [routerLink]="['/news', card.id]" >
+<!-- [class]="{ vis : !visible }" -->
+  <!-- IMAGE -->
+  <!-- <mat-spinner [color]="'warn'"></mat-spinner> -->
+  <img mat-card-image [src]="card.data.img" (onload)="visible=true">
+
+  <div style="width: 100%">
+    <div style="width: 100%; text-align: right; padding-right: 5px;">
+      <small>{{ (card.data.date ? card.data.date.toDate() : null) | date : 'EEEE, dd.MM.yyyy' }}</small></div>
+  </div>
+
+  <mat-card-title>
+    {{ card.data.title }}
+  </mat-card-title>
+
+  <mat-card-content style="padding-top: 0;">
+    <!-- TITLE -->
+
+    <!-- ARTICLE -->
+    <p>
+      {{card.data.article.substr(0, prevLen)}}
+      <span *ngIf="card.data.article.length > prevLen">...<b>[mehr]</b></span>
+    </p>
+  </mat-card-content>
+</mat-card>
