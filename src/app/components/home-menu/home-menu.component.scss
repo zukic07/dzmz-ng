@@ -1,5 +1,5 @@
 .link-button {
-    background-color: transparent;
+    background-color: white;
     border: none;
 }
 
@@ -8,13 +8,23 @@
 }
 
 .dzmz-bg {
-    background-image: url("../../../assets/img/dzmzLogoGray.png");
-    background-repeat: no-repeat;
-    background-position: center; 
-    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 240px;
+    z-index: 0;
+}
+
+.main {
+    height: calc(100% - 58px);
 }
 
 :host {
     width: 100%;
     background-color: white;
+    z-index: 1;
+
+    // background-image: url("../../../assets/img/dzmzLogoGray.png");
+    // background-repeat: no-repeat;
+    // background-position: center; 
+    // height: 100%;
 }

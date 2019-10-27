@@ -27,7 +27,7 @@ export class HutbaControllerComponent implements OnInit {
     this.getAllHutbe();
   }
 
-  @ViewChild('hutbePond') hutbePond: FilePond;
+  @ViewChild('hutbePond', { static: false }) hutbePond: FilePond;
 
   onClick() {
 

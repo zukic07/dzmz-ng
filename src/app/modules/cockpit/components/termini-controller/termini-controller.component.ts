@@ -112,7 +112,7 @@ export class TerminiControllerComponent implements OnInit {
   }
 
 
-  @ViewChild('terminiPond') terminiPond: FilePond;
+  @ViewChild('terminiPond', { static: true }) terminiPond: FilePond;
 
   pondOptions = {
     multiple: false,

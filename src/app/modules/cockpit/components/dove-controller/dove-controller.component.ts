@@ -61,7 +61,7 @@ export class DoveControllerComponent implements OnInit {
   }
 
 
-  @ViewChild('dovePond') dovePond: FilePond;
+  @ViewChild('dovePond', { static: true }) dovePond: FilePond;
 
   pondOptions = {
     multiple: false,

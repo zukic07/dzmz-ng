@@ -92,7 +92,7 @@ export class NewsControllerComponent implements OnInit {
   }
 
 
-  @ViewChild('myPond') myPond: FilePond;
+  @ViewChild('myPond', { static: true }) myPond: FilePond;
 
   pondOptions = {
     multiple: false,

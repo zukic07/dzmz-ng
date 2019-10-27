@@ -26,7 +26,7 @@ export class VaktijeControllerComponent implements OnInit {
     this.getAllVaktije();
   }
 
-  @ViewChild('vaktijePond') vaktijePond: FilePond;
+  @ViewChild('vaktijePond', { static: true }) vaktijePond: FilePond;
 
   pondOptions = {
     multiple: false,

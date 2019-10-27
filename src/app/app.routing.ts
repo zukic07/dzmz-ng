@@ -47,7 +47,7 @@ const routes: Routes = [
         }
     ]},
     // * MODULES (dependent)
-    { path: 'cockpit', loadChildren: './modules/cockpit/cockpit.module#CockpitModule', canActivate: [AuthService] },
+    { path: 'cockpit', loadChildren: () => import('./modules/cockpit/cockpit.module').then(m => m.CockpitModule), canActivate: [AuthService] },
     { path: 'login', component: LoginComponent }
   ];
 

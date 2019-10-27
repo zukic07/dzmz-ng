@@ -1,47 +1,57 @@
+<div class="dzmz-bg d-flex justify-content-center">
+  <img class="rounded mx-auto d-block" src="../../../assets/img/dzmzLogoGray.png">
+</div>
+
 <mat-toolbar class="d-flex justify-content-between align-items-center">
   <span>Home</span>
   <img class="dzmz-header-img" src="../../../assets/img/dzmzLogo.png">
 
 </mat-toolbar>
 
-
-<div class="container text-center">
-  <span class="p-1"><span class="text-secondary mr-4">5 dana:</span> Dzuma Namaz - 15:00h
-    <mat-icon style="margin-left: 10px;">announcement</mat-icon>
-  </span>
-  <hr class="m-0">
-  <hr class="mt-1 mb-0">
-  <div class="row">
-    <div class="col-2 d-flex align-items-center">
-      <mat-icon class="m-1" style="margin-left: 10px;">event</mat-icon>
-      Slj.
+<div class="main d-flex flex-column align-items-end">
+  <div class="container text-center">
+    <span class="p-1"><span class="text-secondary mr-4">5 dana:</span> Dzuma Namaz - 15:00h
+      <mat-icon style="margin-left: 10px;">announcement</mat-icon>
+    </span>
+    <hr class="m-0">
+    <hr class="mt-1 mb-0">
+    <div class="row">
+      <div class="col-2 d-flex align-items-center">
+        <mat-icon class="m-1" style="margin-left: 10px;">event</mat-icon>
+        Slj.
+      </div>
+      <div class="col d-flex align-items-center justify-content-center text-left pt-2 pb-2">
+        <blockquote class="blockquote mb-0 text-left">
+          <p class="mb-0">Vecer Kur`ana</p>
+          <footer class="blockquote-footer">29.05.2019 - 20:30h</footer>
+        </blockquote>
+      </div>
     </div>
-    <div class="col d-flex align-items-center justify-content-center text-left pt-2 pb-2">
-      <blockquote class="blockquote mb-0 text-left">
-        <p class="mb-0">Vecer Kur`ana</p>
-        <footer class="blockquote-footer">29.05.2019 - 20:30h</footer>
-      </blockquote>
+    <hr class="m-0">
+    <hr class="mt-1">
+  </div>
+
+  <div class="container">
+    <div class="d-flex align-content-stretch flex-wrap justify-content-around align-items-center">
+      <!-- LINKS -->
+      <div *ngFor="let item of links" class="grid-menu m-2">
+        <button class="link-button w-100 pt-2 shadow" [routerLink]="item.route" [disabled]="item.disabled"
+          mat-raised-button matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+          <div class="d-flex flex-column justify-content-end">
+            <i class="material-icons">
+              {{ item.icon }}
+            </i>
+            <span>{{ item.label }}</span>
+          </div>
+        </button>
+      </div>
     </div>
   </div>
-  <hr class="m-0">
-  <hr class="mt-1">
-</div>
 
-<div class="container">
-  <div class="d-flex align-content-stretch flex-wrap justify-content-around align-items-center">
-    <!-- LINKS -->
-    <div *ngFor="let item of links" class="grid-menu m-2">
-      <button class="link-button w-100 pt-2 shadow" [routerLink]="item.route" [disabled]="item.disabled" mat-raised-button
-        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
-        <div class="d-flex flex-column justify-content-end">
-          <i class="material-icons">
-            {{ item.icon }}
-          </i>
-          <span>{{ item.label }}</span>
-        </div>
-      </button>
+  <div class="container mt-auto w-100 text-center" style="z-index: 1">
+    <div class="card card-inverse card-body bg-light p-1">
+      <blockquote class="mb-0">IZBNJ - Islamska zajednica Bоšnjaka u Njemačkoj – Džemat Mainz</blockquote>
     </div>
   </div>
-</div>
 
-<img class="rounded mx-auto d-block" src="../../../assets/img/dzmzLogoGray.png">
+</div>

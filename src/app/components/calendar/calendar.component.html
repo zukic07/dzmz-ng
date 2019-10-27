@@ -61,7 +61,9 @@
 <!-- ********* -->
 <!-- List View -->
 <!-- ********* -->
-<mat-list role="list" *ngIf="listView && calSvc.terminList.length > 0">
+<div class="text-secondary ml-3" *ngIf="listView">Sljedece termini</div>
+
+<mat-list class="pt-0" role="list" *ngIf="listView && calSvc.terminList.length > 0">
   <mat-list-item role="listitem" *ngFor="let term of calSvc.terminList; let i = index"
     class="border rounded h-auto mb-2 w-100">
     <!-- #region own listview -->
