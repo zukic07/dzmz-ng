@@ -6,7 +6,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NewsControllerComponent } from './components/news-controller/news-controller.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatNativeDateModule, MatSelectModule, MatCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
