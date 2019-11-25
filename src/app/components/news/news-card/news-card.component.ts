@@ -22,4 +22,8 @@ export class NewsCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  replaceLineBreaks(str: string) {
+    return str.replace(/(?:\r\n|\r|\n)/g, '<br>')
+  }
+
 }

@@ -24,8 +24,7 @@
         <!-- TITLE -->
 
         <!-- ARTICLE -->
-        <p>
-        {{card.article}}
+        <p innerHtml="{{replaceLineBreaks(card.article)}}">
         </p>
     </mat-card-content>
 </mat-card>

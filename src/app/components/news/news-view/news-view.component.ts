@@ -45,6 +45,10 @@ export class NewsViewComponent implements OnInit {
     this._locale.back();
   }
 
+  replaceLineBreaks(str: string) {
+    return str.replace(/(?:\r\n|\r|\n)/g, '<br>')
+  }
+
   
 
 

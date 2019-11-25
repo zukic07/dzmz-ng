@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>{{data.data.title}}</h1>
+<h5 mat-dialog-title style="line-height: 24px">{{data.data.title}}</h5>
+<hr>
+<img [src]="data.data.img ? data.data.img : 'assets/img/dzmzLogoGrayWithBorder.png'" class="mr-3" width="100%" alt="...">
+
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
+  <p innerHtml="{{replaceLineBreaks(data.data.description)}}"></p>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">ok</button>

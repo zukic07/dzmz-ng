@@ -48,6 +48,7 @@
         <div *ngIf="calSvc.terminList.length > 0">
           <div *ngFor="let term of calSvc.terminList">
             <div class="cal-term cal-color-default"
+              (click)="openDialog(term)"
               *ngIf="term.data.date.toDate().getDate() == dateHere.day && term.data.date.toDate().getMonth() == dateHere.month && term.data.date.toDate().getFullYear() == dateHere.year">
               {{ term.data.title }}
             </div>
@@ -101,7 +102,7 @@
         <div class="text-muted">
           <p>{{ term.data.date.toDate().getHours() }}:{{ term.data.date.toDate().getMinutes() }}Uhr</p>
         </div>
-        {{ term.data.description }}
+        <!-- {{ term.data.description }} -->
       </div>
     </div>
     <!-- #endregion bootstrapm media -->
