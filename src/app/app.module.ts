@@ -20,6 +20,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
@@ -40,6 +41,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ContactComponent } from './components/contact/contact.component';
 import { NewsCardComponent } from './components/news/news-card/news-card.component';
+import { CalendarModalTerminComponent } from './components/calendar/calendar-modal-termin/calendar-modal-termin.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -56,7 +59,8 @@ import { NewsCardComponent } from './components/news/news-card/news-card.compone
     LoginComponent,
     CalendarComponent,
     ContactComponent,
-    NewsCardComponent
+    NewsCardComponent,
+    CalendarModalTerminComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +82,8 @@ import { NewsCardComponent } from './components/news/news-card/news-card.compone
     MatListModule,
     MatButtonToggleModule,
     MatProgressSpinnerModule,
+    MatBadgeModule,
+    MatDialogModule,
     // FIREBASE
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
@@ -89,6 +95,7 @@ import { NewsCardComponent } from './components/news/news-card/news-card.compone
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ AngularFirestore ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ CalendarModalTerminComponent ]
 })
 export class AppModule { }

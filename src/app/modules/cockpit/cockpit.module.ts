@@ -25,6 +25,7 @@ import { TerminiControllerComponent } from './components/termini-controller/term
 import { VaktijeControllerComponent } from './components/vaktije-controller/vaktije-controller.component';
 import { HutbaControllerComponent } from './components/hutba-controller/hutba-controller.component';
 import { DoveControllerComponent } from './components/dove-controller/dove-controller.component';
+import { MatListModule } from '@angular/material/list';
 
 registerPlugin(FilePondPluginFileValidateType);
 registerPlugin(FilePondPluginImageExifOrientation);
@@ -45,6 +46,7 @@ let routes = [
     MatSelectModule,
     MatButtonModule,
     MatCardModule,
+    MatListModule,
     MatNativeDateModule,
     MatDatepickerModule,
     FormsModule,

@@ -10,7 +10,7 @@
 
 <div class="main d-flex flex-column align-items-end">
   <div class="container text-center">
-    <span class="p-1"><span class="text-secondary mr-4">5 dana:</span> Dzuma Namaz - 15:00h
+    <span class="p-1"><span class="text-secondary mr-4">{{dzuma}}:</span> Dzuma Namaz - 13:30h
       <mat-icon style="margin-left: 10px;">announcement</mat-icon>
     </span>
     <hr class="m-0">
@@ -31,21 +31,57 @@
     <hr class="mt-1">
   </div>
 
-  <div class="container">
+  <!-- #region MENU BUTTONs -->
+  <div class="container" style="z-index:1">
     <div class="d-flex align-content-stretch flex-wrap justify-content-around align-items-center">
-      <!-- LINKS -->
-      <div *ngFor="let item of links" class="grid-menu m-2">
-        <button class="link-button w-100 pt-2 shadow" [routerLink]="item.route" [disabled]="item.disabled"
-          mat-raised-button matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+      <!-- BUTTON TERMINI -->
+      <div class="grid-menu m-2">
+        <button class="link-button w-100 pt-2 shadow" routerLink="/home/calendar"
+          mat-raised-button [(matBadge)]="calendarSvc.terminList.length" matBadgePosition="after" matBadgeColor="warn">
           <div class="d-flex flex-column justify-content-end">
-            <i class="material-icons">
-              {{ item.icon }}
-            </i>
-            <span>{{ item.label }}</span>
+            <i class="material-icons">calendar_today</i>
+            <span>Termini</span>
+          </div>
+        </button>
+      </div>
+      <!-- BUTTON DOVE -->
+      <div class="grid-menu m-2">
+        <button class="link-button w-100 pt-2 shadow" routerLink="/home/calendar" mat-raised-button>
+          <div class="d-flex flex-column justify-content-end">
+            <i class="material-icons">import_contacts</i>
+            <span>Dove</span>
+          </div>
+        </button>
+      </div>
+      <!-- BUTTON VAKTIJE -->
+      <div class="grid-menu m-2">
+        <button class="link-button w-100 pt-2 shadow" routerLink="/home/vaktije" mat-raised-button>
+          <div class="d-flex flex-column justify-content-end">
+            <i class="material-icons">schedule</i>
+            <span>Vaktije</span>
+          </div>
+        </button>
+      </div>
+      <!-- BUTTON HUTBE -->
+      <div class="grid-menu m-2">
+        <button class="link-button w-100 pt-2 shadow" routerLink="/home/hutbe" mat-raised-button>
+          <div class="d-flex flex-column justify-content-end">
+            <i class="material-icons">local_library</i>
+            <span>Hutbe</span>
+          </div>
+        </button>
+      </div>
+      <!-- BUTTON CONTACT -->
+      <div class="grid-menu m-2">
+        <button class="link-button w-100 pt-2 shadow" routerLink="/home/contact" mat-raised-button>
+          <div class="d-flex flex-column justify-content-end">
+            <i class="material-icons">home</i>
+            <span>Kontakt</span>
           </div>
         </button>
       </div>
     </div>
+    <!-- #endregion MENU BUTTONs -->
   </div>
 
   <div class="container mt-auto w-100 text-center" style="z-index: 1">

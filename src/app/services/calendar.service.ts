@@ -24,5 +24,9 @@ export class CalendarService {
     });
   }
 
+  init() {
+    ;
+  }
+
 
 }

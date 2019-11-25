@@ -5,6 +5,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import Timestamp = firestore.Timestamp;
 import { firestore } from 'firebase';
 import { CalendarService } from 'src/app/services/calendar.service';
+import { CalendarModalTerminComponent } from './calendar-modal-termin/calendar-modal-termin.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -18,6 +20,8 @@ export class CalendarComponent implements OnInit {
     {date: new Date(), title: "KurAn" },
     {date: new Date(), title: "fudbal" }
   ]
+
+  calendarLastVisited: Date;
 
   listView = true;
 
@@ -39,9 +43,24 @@ export class CalendarComponent implements OnInit {
 
   termine;
 
-  constructor(private router: Router, private db: AngularFirestore, public calSvc: CalendarService) { }
+  constructor(private router: Router, private db: AngularFirestore, public calSvc: CalendarService, public dialog: MatDialog) { }
+
+  openDialog(item): void {
+    const dialogRef = this.dialog.open(CalendarModalTerminComponent, {
+      width: '250px',
+      data: item
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
 
   ngOnInit() {
+    // update last visited dates
+    this.calendarLastVisited = new Date();
+    localStorage.setItem("calendarLastVisited", this.calendarLastVisited.toISOString());
 
     // this.getAllDates();
 
@@ -178,4 +197,9 @@ export class CalendarComponent implements OnInit {
       case 6: return "SA";
     }
   }
+
+  listSortTimestamp(a, b) {
+    return a.data.date.toDate() < b.data.date.toDate() ? 1 : -1;
+  }
 }
+

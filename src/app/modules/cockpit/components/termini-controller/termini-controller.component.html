@@ -57,12 +57,34 @@
 
 <div class="container-fluid">
 
-  <mat-card *ngFor="let doc of allTermini">
-      <!-- close icon -->
+  <!-- <mat-card *ngFor="let doc of allTermini">
+
     <button type="button" class="close" aria-label="Close" (click)="deleteTermin(doc.id)">
       <span aria-hidden="true">&times;</span>
     </button>
     {{ doc.data.title }} <br>
     {{ doc.data.date }}
-  </mat-card>
+  </mat-card> -->
+  <mat-list class="pt-0" role="list">
+    <mat-list-item role="listitem" *ngFor="let term of allTermini; let i = index"
+      class="border rounded h-auto mb-2 w-100">
+      <!-- #region bootstrap media view -->
+      <div class="media">
+        <img [src]="term.data.img ? term.data.img : 'assets/img/dzmzLogoGrayWithBorder.png'" class="mr-3" width="64px"
+          height="64px" alt="...">
+        <div class="media-body">
+          <h5 class="mt-0 mb-0">{{ term.data.title }}</h5>
+          <div class="text-muted">
+            <p>{{ term.data.date.toDate().getHours() }}:{{ term.data.date.toDate().getMinutes() }}Uhr</p>
+          </div>
+          {{ term.data.description }}
+        </div>
+      </div>
+      <!-- DELETE BUTTON -->
+      <button type="button" class="btn btn-danger float-right" aria-label="Close" (click)="deleteTermin(term.id)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <!-- #endregion bootstrapm media -->
+    </mat-list-item>
+  </mat-list>
 </div>

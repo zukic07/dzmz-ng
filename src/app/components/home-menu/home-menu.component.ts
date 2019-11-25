@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CalendarService } from 'src/app/services/calendar.service';
+import { Termin } from 'src/app/models/termin.model';
 
 @Component({
   selector: 'app-home-menu',
@@ -7,54 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeMenuComponent implements OnInit {
   
-  links = [
-    {
-      icon: "calendar_today",
-      label: "Termini",
-      route: "/home/calendar",
-      badge: true,
-      disabled: false
-    },
-    {
-      icon: "import_contacts",
-      label: "Dove",
-      route: "/home/calendar",
-      badge: false,
-      disabled: true
-    },
-    {
-      icon: "schedule",
-      label: "Vaktije",
-      route: "/home/vaktije",
-      badge: true,
-      disabled: false
-    },
-    {
-      icon: "local_library",
-      label: "Hutbe",
-      route: "/home/calendar",
-      badge: true,
-      disabled: true
-    },
-    {
-      icon: "calendar_today",
-      label: "free",
-      route: "/home/calendar",
-      badge: false,
-      disabled: true
-    },
-    {
-      icon: "home",
-      label: "Kontakt",
-      route: "/home/contact",
-      badge: false,
-      disabled: false
-    },
-  ];
+  dzumaDays = [5, 4, 3, 2, 1, 0, 6];
+  dzuma;
+
+  calendarLastVisited : Date;
   
-  constructor() { }
+  constructor(private calendarSvc: CalendarService) { 
+    this.calendarSvc.init();
+    // how many days till dzuma
+    let date = new Date();
+    switch(this.dzumaDays[date.getDay()]) {
+      case 0 : this.dzuma = "Danas"; break;
+      case 1 : this.dzuma = "Sutra"; break;
+      default: this.dzuma = `${this.dzumaDays[date.getDay()]} dana`;
+    }
+
+    // get Date for comparison and update view (button badge)
+    let clv = localStorage.getItem("calendarLastVisited");
+    if (clv != null) {
+      this.calendarLastVisited = new Date(clv);
+    } else {
+      this.calendarLastVisited = new Date();
+    }
+
+  }
 
   ngOnInit() {
+
   }
+
+
 
 }
