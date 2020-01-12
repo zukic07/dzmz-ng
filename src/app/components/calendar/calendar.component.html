@@ -45,12 +45,12 @@
       <div class="cal-item">
         {{ dateHere.day }}
         <br>
-        <div *ngIf="calSvc.terminList.length > 0">
-          <div *ngFor="let term of calSvc.terminList">
+        <div *ngIf="(terminList$ | async)?.length > 0">
+          <div *ngFor="let term of terminList$ | async">
             <div class="cal-term cal-color-default"
               (click)="openDialog(term)"
-              *ngIf="term.data.date.toDate().getDate() == dateHere.day && term.data.date.toDate().getMonth() == dateHere.month && term.data.date.toDate().getFullYear() == dateHere.year">
-              {{ term.data.title }}
+              *ngIf="term?.date?.toDate().getDate() == dateHere.day && term?.date?.toDate().getMonth() == dateHere.month && term?.date?.toDate().getFullYear() == dateHere.year">
+              {{ term?.title }}
             </div>
           </div>
         </div>
@@ -64,8 +64,9 @@
 <!-- ********* -->
 <div class="text-secondary ml-3" *ngIf="listView">Sljedece termini</div>
 
-<mat-list class="pt-0" role="list" *ngIf="listView && calSvc.terminList.length > 0">
-  <mat-list-item role="listitem" *ngFor="let term of calSvc.terminList.sort(listSortTimestamp); let i = index"
+<mat-list class="pt-0" role="list" *ngIf="listView && (terminList$ | async)?.length > 0">
+  <div *ngFor="let term of (terminList$ | async); let i = index">
+  <mat-list-item role="listitem" *ngIf="term.date.toDate() - Date.now() > 0"
     class="border rounded h-auto mb-2 w-100" (click)="openDialog(term)">
     <!-- #region own listview -->
     <!-- <div class="d-flex flex-column w-100">
@@ -95,16 +96,17 @@
     <!-- #endregion own list view -->
     <!-- #region bootstrap media view -->
     <div class="media">
-      <img [src]="term.data.img ? term.data.img : 'assets/img/dzmzLogoGrayWithBorder.png'" class="mr-3" width="64px"
+      <img [src]="term?.img ? term.img : 'assets/img/dzmzLogoGrayWithBorder.png'" class="mr-3" width="64px"
         height="64px" alt="...">
       <div class="media-body">
-        <h5 class="mt-0 mb-0">{{ term.data.title }}</h5>
+        <h5 class="mt-0 mb-0">{{ term.title }}</h5>
         <div class="text-muted">
-          <p>{{ term.data.date.toDate().getHours() }}:{{ term.data.date.toDate().getMinutes() }}Uhr</p>
+          <p>{{ term?.date?.toDate().getHours() }}:{{ term?.date?.toDate().getMinutes() }}Uhr</p>
         </div>
         <!-- {{ term.data.description }} -->
       </div>
     </div>
     <!-- #endregion bootstrapm media -->
   </mat-list-item>
+  </div>
 </mat-list>

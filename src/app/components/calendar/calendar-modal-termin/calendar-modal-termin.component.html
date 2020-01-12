@@ -1,9 +1,9 @@
-<h5 mat-dialog-title style="line-height: 24px">{{data.data.title}}</h5>
+<h5 mat-dialog-title style="line-height: 24px">{{termin?.title}}</h5>
 <hr>
-<img [src]="data.data.img ? data.data.img : 'assets/img/dzmzLogoGrayWithBorder.png'" class="mr-3" width="100%" alt="...">
+<img [src]="termin?.img ? termin.img : 'assets/img/dzmzLogoGrayWithBorder.png'" class="mr-3" width="100%" alt="...">
 
 <div mat-dialog-content>
-  <p innerHtml="{{replaceLineBreaks(data.data.description)}}"></p>
+  <p innerHtml="{{replaceLineBreaks(termin?.description)}}"></p>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">ok</button>

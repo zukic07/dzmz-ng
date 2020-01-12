@@ -7,6 +7,11 @@ import { firestore } from 'firebase';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { CalendarModalTerminComponent } from './calendar-modal-termin/calendar-modal-termin.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Termin } from 'src/app/models/termin.model';
+
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.state';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 @Component({
@@ -26,6 +31,7 @@ export class CalendarComponent implements OnInit {
   listView = true;
 
   date = new Date();
+  Date = Date;
   currentDate = new Date();
 
   public weekday;
@@ -43,9 +49,18 @@ export class CalendarComponent implements OnInit {
 
   termine;
 
-  constructor(private router: Router, private db: AngularFirestore, public calSvc: CalendarService, public dialog: MatDialog) { }
+  public terminList$: Observable<Array<Termin>>;
 
-  openDialog(item): void {
+  constructor(private router: Router,
+     private db: AngularFirestore,
+     public calSvc: CalendarService,
+     public dialog: MatDialog,
+     private store: Store<AppState>
+     ) { 
+       this.terminList$ = this.store.select('terminList');
+     }
+
+  openDialog(item: Termin): void {
     const dialogRef = this.dialog.open(CalendarModalTerminComponent, {
       width: '250px',
       data: item
@@ -199,7 +214,10 @@ export class CalendarComponent implements OnInit {
   }
 
   listSortTimestamp(a, b) {
-    return a.data.date.toDate() < b.data.date.toDate() ? 1 : -1;
+    console.log("list sort items");
+    console.log(a);
+    console.log(b);
+    return a.date.toDate() < b.date.toDate() ? 1 : -1;
   }
 }
 

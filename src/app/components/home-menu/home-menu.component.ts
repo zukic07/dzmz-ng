@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { Termin } from 'src/app/models/termin.model';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.state';
 
 @Component({
   selector: 'app-home-menu',
@@ -11,11 +14,15 @@ export class HomeMenuComponent implements OnInit {
   
   dzumaDays = [5, 4, 3, 2, 1, 0, 6];
   dzuma;
+  nextTermin = null;
 
   calendarLastVisited : Date;
+  terminList$: Observable<Array<Termin>>;
   
-  constructor(private calendarSvc: CalendarService) { 
-    this.calendarSvc.init();
+  constructor(private calendarSvc: CalendarService, private store: Store<AppState>) { 
+
+    this.terminList$ = this.store.select("terminList")
+
     // how many days till dzuma
     let date = new Date();
     switch(this.dzumaDays[date.getDay()]) {
@@ -31,6 +38,14 @@ export class HomeMenuComponent implements OnInit {
     } else {
       this.calendarLastVisited = new Date();
     }
+
+    this.terminList$.subscribe(list => {
+      console.log(list)
+      this.nextTermin = list.find((e: Termin) => {
+        return e.date.toDate() - new Date() > 0;
+      });
+      console.log(this.nextTermin)
+    })
 
   }
 

@@ -36,7 +36,6 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ContactComponent } from './components/contact/contact.component';
@@ -44,6 +43,8 @@ import { NewsCardComponent } from './components/news/news-card/news-card.compone
 import { CalendarModalTerminComponent } from './components/calendar/calendar-modal-termin/calendar-modal-termin.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { StoreModule } from '@ngrx/store';
+import { terminListReducer } from './reducer/terminReducer';
 
 
 
@@ -84,6 +85,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatProgressSpinnerModule,
     MatBadgeModule,
     MatDialogModule,
+    // NGRX
+    StoreModule.forRoot({
+      terminList: terminListReducer
+    }),
     // FIREBASE
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),

@@ -1,10 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Termin } from 'src/app/models/termin.model';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-calendar-modal-termin',
@@ -14,7 +11,7 @@ export interface DialogData {
 export class CalendarModalTerminComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<CalendarModalTerminComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public termin: Termin) {}
 
   ngOnInit() {
   }
