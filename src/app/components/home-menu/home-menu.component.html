@@ -25,7 +25,7 @@
           <p class="mb-0" [ngClass]="{'noTermin': nextTermin == null}">
             {{ nextTermin ? nextTermin.title : 'nema termina'}}
           </p>
-          <footer class="blockquote-footer">{{ nextTermin ? (nextTermin.date.toDate() | date:'dd.MM, hh:mm') + 'h' : ''}}</footer>
+          <footer class="blockquote-footer">{{ nextTermin ? (calendarSvc.createDate(nextTermin.date) | date:'dd.MM, hh:mm') + 'h' : ''}}</footer>
         </blockquote>
       </div>
     </div>

@@ -72,7 +72,7 @@ export class TerminiControllerComponent implements OnInit {
 
     this.db.collection("Termini").add({
       title: this.title.value,
-      date: this.date,
+      date: this.date.getTime(),
       img: this.img,
       description: this.description
     }).then(() => {

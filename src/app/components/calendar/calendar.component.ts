@@ -53,7 +53,7 @@ export class CalendarComponent implements OnInit {
 
   constructor(private router: Router,
      private db: AngularFirestore,
-     public calSvc: CalendarService,
+     public calendarSvc: CalendarService,
      public dialog: MatDialog,
      private store: Store<AppState>
      ) { 
@@ -71,6 +71,8 @@ export class CalendarComponent implements OnInit {
       // this.animal = result;
     });
   }
+
+  
 
   ngOnInit() {
     // update last visited dates

@@ -25,9 +25,48 @@ export class CalendarService {
 
   }
 
-  get getNextTermin() : Termin {
+  getHours(date: number) {
+    if (date != null) {
+      return new Date(date).getHours()
+    } else {
+      return ""
+    }
+  }
 
-    return this.terminList$.s;
+  getMinutes(date: number) {
+    if (date != null) {
+      return new Date(date).getMinutes()
+    } else {
+      return ""
+    }
+  }
+
+  getDate(date: number) {
+    if (date != null) {
+      return new Date(date).getDate()
+    } else {
+      return ""
+    }
+  }
+
+  getMonth(date: number) {
+    if (date != null) {
+      return new Date(date).getMonth()
+    } else {
+      return ""
+    }
+  }
+
+  getYear(date: number) {
+    if (date != null) {
+      return new Date(date).getFullYear()
+    } else {
+      return ""
+    }
+  }
+
+  createDate(date: number) {
+    return new Date(date);
   }
 
 

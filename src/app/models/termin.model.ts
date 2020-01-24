@@ -1,6 +1,6 @@
 
 export interface Termin {
-    date: Date;
+    date: number;
     description: string;
     title: string;
     img: string;

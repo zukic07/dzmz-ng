@@ -42,7 +42,7 @@ export class HomeMenuComponent implements OnInit {
     this.terminList$.subscribe(list => {
       console.log(list)
       this.nextTermin = list.find((e: Termin) => {
-        return e.date.toDate() - new Date() > 0;
+        return e.date - new Date().getTime() > 0;
       });
       console.log(this.nextTermin)
     })
