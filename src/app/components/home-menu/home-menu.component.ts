@@ -4,6 +4,8 @@ import { Termin } from 'src/app/models/termin.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
+import { MatDialog } from '@angular/material/dialog';
+import { CalendarComponent } from '../calendar/calendar.component';
 
 @Component({
   selector: 'app-home-menu',
@@ -19,8 +21,9 @@ export class HomeMenuComponent implements OnInit {
   calendarLastVisited : Date;
   terminList$: Observable<Array<Termin>>;
   
-  constructor(private calendarSvc: CalendarService, private store: Store<AppState>) { 
+  constructor(private calendarSvc: CalendarService, private store: Store<AppState>, public dialog: MatDialog) { 
 
+    
     this.terminList$ = this.store.select("terminList")
 
     // how many days till dzuma
@@ -51,6 +54,19 @@ export class HomeMenuComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CalendarComponent, {
+      width: '100%',
+      height: '100%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
   }
 
 

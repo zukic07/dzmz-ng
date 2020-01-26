@@ -1,6 +1,6 @@
 <!-- HEADER -->
 <mat-toolbar>
-  <mat-icon style="margin-right: 15px;" (click)="goBack()">keyboard_arrow_down</mat-icon>
+  <mat-icon style="margin-right: 15px;" (click)="closeCalendar()">keyboard_arrow_down</mat-icon>
   <span>Termini</span>
 </mat-toolbar>
 
@@ -68,32 +68,6 @@
   <div *ngFor="let term of (terminList$ | async); let i = index">
   <mat-list-item role="listitem" *ngIf="term.date - Date.now() > 0"
     class="border rounded h-auto mb-2 w-100" (click)="openDialog(term)">
-    <!-- #region own listview -->
-    <!-- <div class="d-flex flex-column w-100">
-      <div class="text-muted text-uppercase text-monospace"
-        *ngIf="i == 0 || (i > 0 && calSvc.terminList[i-1].data.date.toDate().getMonth() != calSvc.terminList[i].data.date.toDate().getMonth())">
-        {{ getMonthName(term.data.date.toDate().getMonth()) }}
-      </div>
-      <div class="d-flex flex-row w-100">
-        <div class="d-flex flex-column text-center mr-4 h-75 align-self-start">
-          <div class="weekday">{{getWeekDay(term.data.date.toDate().getDay())}}</div>
-          <div class="day">{{term.data.date.toDate().getDate()}}</div>
-        </div>
-        <div class="w-100 h-100 d-flex flex-row justify-content-between border rounded p-1">
-          <div class="">
-            <div class="">{{ term.data.title }}</div>
-            <div class="text-muted">
-              {{ term.data.date.toDate().getHours() }}:{{ term.data.date.toDate().getMinutes() }}Uhr</div>
-            <div class="ml-2 mr-2 pl-1 pr-1 bg-light rounded" *ngIf="term.data.description">{{ term.data.description }}
-            </div>
-          </div>
-          <div *ngIf="term.data.img">
-            <img [src]="term.data.img" class="cal-list-img float-right">
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- #endregion own list view -->
     <!-- #region bootstrap media view -->
     <div class="media">
       <img [src]="term?.img ? term.img : 'assets/img/dzmzLogoGrayWithBorder.png'" class="mr-3" width="64px"

@@ -27,7 +27,7 @@ const routes: Routes = [
         // * HOME
         {
             path: 'home',
-            component: HomeMenuComponent,
+            component: VisitorComponent,
             data: { animation: 'Home' }
         },
         {

@@ -38,7 +38,7 @@
     <div class="d-flex align-content-stretch flex-wrap justify-content-around align-items-center">
       <!-- BUTTON TERMINI -->
       <div class="grid-menu m-2">
-        <button class="link-button w-100 pt-2 shadow" routerLink="/home/calendar" 
+        <button class="link-button w-100 pt-2 shadow" (click)="openDialog()"
         mat-raised-button [matBadge]="(terminList$ | async).length" matBadgePosition="after" matBadgeColor="warn">
           <div class="d-flex flex-column justify-content-end">
             <i class="material-icons">calendar_today</i>
@@ -86,10 +86,11 @@
     <!-- #endregion MENU BUTTONs -->
   </div>
 
-  <div class="container mt-auto w-100 text-center" style="z-index: 1">
+  <div class="container mt-auto w-100 h-100 text-center" style="z-index: 1">
     <div class="card card-inverse card-body bg-light p-1">
       <blockquote class="mb-0">IZBNJ - Islamska zajednica Bоšnjaka u Njemačkoj – Džemat Mainz</blockquote>
     </div>
   </div>
+  
 
 </div>

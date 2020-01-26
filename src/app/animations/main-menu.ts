@@ -6,23 +6,35 @@ trigger('routeAnimations', [
         query(':enter, :leave', [
             style({
                 position: 'absolute',
-                top: 0,
-                left: 0,
+                // top: 0,
+                // left: 0,
                 width: '100%'
             })
         ]),
         query(':enter', [
-            style({ left: '100%' })
+            style({ 
+                // left: '100%',
+                opacity: 0
+             })
         ]),
         query(':leave', [
-            style({ left: '0' })
+            style({
+                //  left: '0',
+                 opacity: 1
+                })
         ]),
         group([
             query(':enter', [
-                animate('200ms', style({ left: '0%' })) 
+                animate('600ms ease', style({ 
+                    // left: '0%',
+                    opacity: 1
+                })) 
             ]),
             query(':leave', [
-                animate('200ms', style({ left: '-100%' }))
+                animate('600ms ease', style({
+                    // left: '-100%',
+                    opacity: 0
+                }))
             ])
         ]),
         query(':enter', animateChild()),
@@ -33,23 +45,35 @@ trigger('routeAnimations', [
         query(':enter, :leave', [
             style({
                 position: 'absolute',
-                top: 0,
-                left: 0,
+                // top: 0,
+                // left: 0,
                 width: '100%'
             })
         ]),
         query(':enter', [
-            style({ left: '-100%' })
+            style({ 
+                // left: '-100%',
+                opacity: 0
+             })
         ]),
         query(':leave', [
-            style({ left: '0' })
+            style({
+                //  left: '0',
+                 opacity: 1
+                 })
         ]),
         group([
             query(':leave', [
-                animate('200ms', style({ left: '100%' }))
+                animate('600ms ease', style({ 
+                    // left: '100%',
+                    opacity: 0 
+                }))
             ]),
             query(':enter', [
-                animate('200ms', style({ left: '0%' })) 
+                animate('600ms ease', style({
+                    //  left: '0%' ,
+                     opacity: 1
+                    })) 
             ])
         ]),
         query(':enter', animateChild()),

@@ -6,7 +6,7 @@ import Timestamp = firestore.Timestamp;
 import { firestore } from 'firebase';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { CalendarModalTerminComponent } from './calendar-modal-termin/calendar-modal-termin.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Termin } from 'src/app/models/termin.model';
 
 import { Store } from '@ngrx/store';
@@ -55,7 +55,8 @@ export class CalendarComponent implements OnInit {
      private db: AngularFirestore,
      public calendarSvc: CalendarService,
      public dialog: MatDialog,
-     private store: Store<AppState>
+     private store: Store<AppState>,
+     public dialogRef: MatDialogRef<CalendarComponent>
      ) { 
        this.terminList$ = this.store.select('terminList');
      }
@@ -72,7 +73,9 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  
+  closeCalendar(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
     // update last visited dates

@@ -15,14 +15,14 @@
 }
 
 .main {
-    height: calc(100% - 58px);
+    height: calc(100% - 58px) !important;
 }
 
 :host {
     width: 100%;
     background-color: white;
     z-index: 1;
-
+    height: 100% !important;
     // background-image: url("../../../assets/img/dzmzLogoGray.png");
     // background-repeat: no-repeat;
     // background-position: center; 
@@ -32,3 +32,4 @@
 .noTermin {
     color: grey;
 }
+
