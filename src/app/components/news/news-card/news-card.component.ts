@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-news-card',
@@ -23,6 +24,7 @@ export class NewsCardComponent implements OnInit {
   }
 
   replaceLineBreaks(str: string) {
+    if (str == null) return;
     return str.replace(/(?:\r\n|\r|\n)/g, '<br>')
   }
 

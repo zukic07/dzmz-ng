@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 import { MatDialog } from '@angular/material/dialog';
 import { CalendarComponent } from '../calendar/calendar.component';
+import { VaktijeComponent } from '../vaktije/vaktije.component';
+import { ContactComponent } from '../contact/contact.component';
 
 @Component({
   selector: 'app-home-menu',
@@ -21,7 +23,9 @@ export class HomeMenuComponent implements OnInit {
   calendarLastVisited : Date;
   terminList$: Observable<Array<Termin>>;
   
-  constructor(private calendarSvc: CalendarService, private store: Store<AppState>, public dialog: MatDialog) { 
+  constructor(private calendarSvc: CalendarService,
+    private store: Store<AppState>, private dialog: MatDialog
+    ) { 
 
     
     this.terminList$ = this.store.select("terminList")
@@ -56,15 +60,41 @@ export class HomeMenuComponent implements OnInit {
 
   }
 
-
-  openDialog(): void {
+  openCalendarDialog(): void {
     const dialogRef = this.dialog.open(CalendarComponent, {
       width: '100%',
-      height: '100%'
+      height: '100%',
+      panelClass: "dialog-max-screen"
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The calendar dialog was closed');
+      // this.animal = result;
+    });
+  }
+
+  openVaktijeDialog(): void {
+    const dialogRef = this.dialog.open(VaktijeComponent, {
+      width: '100%',
+      height: '100%',
+      panelClass: "dialog-max-screen"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The vaktije dialog was closed');
+      // this.animal = result;
+    });
+  }
+
+  openContactDialog(): void {
+    const dialogRef = this.dialog.open(ContactComponent, {
+      width: '100%',
+      height: '100%',
+      panelClass: "dialog-max-screen"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The vaktije dialog was closed');
       // this.animal = result;
     });
   }

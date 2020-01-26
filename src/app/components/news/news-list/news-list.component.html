@@ -5,5 +5,5 @@
 
 <!-- ARTICLE CARD -->
 <div class="container" *ngFor="let card of newsSvc.newslist">
-  <app-news-card [card]="card"></app-news-card>
+  <app-news-card [card]="card" (click)="openNewsCardDialog(card)"></app-news-card>
 </div>

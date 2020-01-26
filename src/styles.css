@@ -35,7 +35,7 @@ img {
     height: 100% !important;
 }
 
-.mat-dialog-container {
+.dialog-max-screen mat-dialog-container {
     padding: 0 !important;
 }
 

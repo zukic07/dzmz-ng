@@ -1,4 +1,4 @@
-export class Vaktija {
+export interface Vaktija {
     img: string;
     title: string;
 }

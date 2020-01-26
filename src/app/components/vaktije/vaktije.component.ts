@@ -8,6 +8,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Vaktija } from 'src/app/models/vaktija.model';
 import { VaktijeService } from 'src/app/services/vaktije.service';
 import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-vaktije',
@@ -18,7 +19,8 @@ export class VaktijeComponent implements AfterViewInit {
   selected;
   pdfUrl = "";
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private router: Router, public vaktijeSvc: VaktijeService) {
+  constructor(private storage: AngularFireStorage, private db: AngularFirestore, private router: Router, public vaktijeSvc: VaktijeService,
+    public dialogRef: MatDialogRef<VaktijeComponent>) {
   }
 
   ngAfterViewInit() {
@@ -49,6 +51,10 @@ export class VaktijeComponent implements AfterViewInit {
 
   goBack() {
     this.router.navigate(["/home"]);
+  }
+
+  closeThis() {
+    this.dialogRef.close();
   }
 
 }

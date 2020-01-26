@@ -38,7 +38,7 @@
     <div class="d-flex align-content-stretch flex-wrap justify-content-around align-items-center">
       <!-- BUTTON TERMINI -->
       <div class="grid-menu m-2">
-        <button class="link-button w-100 pt-2 shadow" (click)="openDialog()"
+        <button class="link-button w-100 pt-2 shadow" (click)="openCalendarDialog()"
         mat-raised-button [matBadge]="(terminList$ | async).length" matBadgePosition="after" matBadgeColor="warn">
           <div class="d-flex flex-column justify-content-end">
             <i class="material-icons">calendar_today</i>
@@ -57,7 +57,7 @@
       </div>
       <!-- BUTTON VAKTIJE -->
       <div class="grid-menu m-2">
-        <button class="link-button w-100 pt-2 shadow" routerLink="/home/vaktije" mat-raised-button>
+        <button class="link-button w-100 pt-2 shadow" (click)="openVaktijeDialog()" mat-raised-button>
           <div class="d-flex flex-column justify-content-end">
             <i class="material-icons">schedule</i>
             <span>Vaktije</span>
@@ -75,7 +75,7 @@
       </div>
       <!-- BUTTON CONTACT -->
       <div class="grid-menu m-2">
-        <button class="link-button w-100 pt-2 shadow" routerLink="/home/contact" mat-raised-button>
+        <button class="link-button w-100 pt-2 shadow" (click)="openContactDialog()" mat-raised-button>
           <div class="d-flex flex-column justify-content-end">
             <i class="material-icons">home</i>
             <span>Kontakt</span>
