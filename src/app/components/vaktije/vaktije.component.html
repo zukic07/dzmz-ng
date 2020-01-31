@@ -4,7 +4,7 @@
     <span>Vaktije</span>
 </mat-toolbar>
 
-<mat-form-field class="having-fixed-toolbar" style="display: inherit; text-align: center;" *ngIf="vaktijeSvc.current">
+<mat-form-field class="having-fixed-toolbar" style="width: 100%; text-align: center;" *ngIf="vaktijeSvc.current">
   <mat-select placeholder="mjesec" [(value)]="vaktijeSvc.current.data.title">
     <mat-option *ngFor="let item of vaktijeSvc.vaktijeList" [value]="item.data.title" (click)="onChange(item)">
       {{item.data.title}}
