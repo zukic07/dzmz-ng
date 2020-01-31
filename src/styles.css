@@ -43,3 +43,13 @@ img {
     width: 100% !important;
     max-width: 100% !important;
 }
+
+.fixed-toolbar {
+    position: fixed;
+    z-index: 2;
+}
+
+.having-fixed-toolbar {
+    margin-top: 64px;
+    z-index: 1;
+}

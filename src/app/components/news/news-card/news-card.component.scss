@@ -22,7 +22,7 @@ mat-card {
 }
 
 @keyframes imgload {
-    from { margin-top: 50px; opacity: 0; }
+    from { margin-top: 50px; opacity: 0; width: 100%; }
     0% { opacity: 0 }
     50% { opacity: 0 }
     100% { opacity: 1 }

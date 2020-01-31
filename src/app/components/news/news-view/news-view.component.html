@@ -1,5 +1,5 @@
 <!-- HEADER -->
-<mat-toolbar *ngIf="card">
+<mat-toolbar class="fixed-toolbar" *ngIf="card">
     <mat-icon style="margin-right: 15px;" (click)="closeThis()">navigate_before</mat-icon>
     <span>{{ card.title }}</span>
 </mat-toolbar>
@@ -7,7 +7,7 @@
 
 
 <!-- ARTICLE CARD -->
-
+<div class="having-fixed-toolbar">
 <mat-card *ngIf="card" class="mr-2 ml-2">
     <!-- IMAGE -->
     <img mat-card-image [src]="card.img">
@@ -28,3 +28,4 @@
         </p>
     </mat-card-content>
 </mat-card>
+</div>

@@ -1,10 +1,10 @@
 <!-- HEADER -->
-<mat-toolbar>
+<mat-toolbar class="fixed-toolbar">
   <mat-icon style="margin-right: 15px;" (click)="closeCalendar()">keyboard_arrow_down</mat-icon>
   <span>Termini</span>
 </mat-toolbar>
 
-<mat-card>
+<mat-card class="having-fixed-toolbar">
   <mat-button-toggle-group name="listView" aria-label="Cal View">
     <mat-button-toggle value="list" (click)="listView=true" [checked]="true">
       <i class="material-icons">
